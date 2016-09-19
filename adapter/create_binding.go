@@ -8,8 +8,8 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/pivotal-cf/on-demand-service-broker-sdk/bosh"
-	"github.com/pivotal-cf/on-demand-service-broker-sdk/serviceadapter"
+	"github.com/pivotal-cf/on-demand-services-sdk/bosh"
+	"github.com/pivotal-cf/on-demand-services-sdk/serviceadapter"
 )
 
 func (b *Binder) CreateBinding(bindingId string, boshVMs bosh.BoshVMs, manifest bosh.BoshManifest, requestParams serviceadapter.RequestParameters) (serviceadapter.Binding, error) {

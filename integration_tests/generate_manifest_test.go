@@ -14,7 +14,7 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	"github.com/onsi/gomega/gexec"
-	"github.com/pivotal-cf/on-demand-service-broker-sdk/bosh"
+	"github.com/pivotal-cf/on-demand-services-sdk/bosh"
 )
 
 var _ = Describe("generate-manifest subcommand", func() {

@@ -3,7 +3,7 @@ package adapter
 import (
 	"log"
 
-	"github.com/pivotal-cf/on-demand-service-broker-sdk/serviceadapter"
+	"github.com/pivotal-cf/on-demand-services-sdk/serviceadapter"
 )
 
 type ManifestGenerator struct {
