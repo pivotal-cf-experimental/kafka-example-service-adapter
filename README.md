@@ -6,6 +6,8 @@ This project relies on the Pivotal Services SDK, available to customers and part
 
 An example of an [on-demand broker](http://docs.pivotal.io/on-demand-service-broker) service adapter for Kafka.
 
+[Example BOSH release](https://github.com/pivotal-cf-experimental/kafka-example-service-adapter-release) for this service adapter.
+
 **This is intended as an example and should not be used in production.**
 
 ---
