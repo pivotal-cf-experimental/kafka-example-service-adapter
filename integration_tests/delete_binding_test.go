@@ -78,9 +78,5 @@ var _ = Describe("delete-binding subcommand", func() {
 		It("exits with code 41", func() {
 			Expect(exitCode).To(Equal(41))
 		})
-
-		It("produces no output", func() {
-			Expect(stdout.String()).To(Equal(""))
-		})
 	})
 })

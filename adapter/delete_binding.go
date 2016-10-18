@@ -19,7 +19,7 @@ func (b *Binder) DeleteBinding(bindingId string, boshVMs bosh.BoshVMs, manifest 
 	if _, errorStream, err := b.Run(b.TopicDeleterCommand, strings.Join(zookeeperServers, ","), bindingId); err != nil {
 		if strings.Contains(string(errorStream), fmt.Sprintf("Topic %s does not exist on ZK path", bindingId)) {
 			b.StderrLogger.Println(fmt.Sprintf("topic '%s' not found", bindingId))
-			return serviceadapter.NewBindingNotFoundError()
+			return serviceadapter.NewBindingNotFoundError(nil)
 		}
 		b.StderrLogger.Println("Error deleting topic: " + err.Error())
 		return errors.New("")

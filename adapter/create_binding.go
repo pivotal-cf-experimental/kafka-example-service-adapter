@@ -49,7 +49,7 @@ func (b *Binder) CreateBinding(bindingId string, boshVMs bosh.BoshVMs, manifest 
 	if _, errorStream, err := b.Run(b.TopicCreatorCommand, strings.Join(zookeeperServers, ","), bindingId); err != nil {
 		if strings.Contains(string(errorStream), "kafka.common.TopicExistsException") {
 			b.StderrLogger.Println(fmt.Sprintf("topic '%s' already exists", bindingId))
-			return serviceadapter.Binding{}, serviceadapter.NewBindingAlreadyExistsError()
+			return serviceadapter.Binding{}, serviceadapter.NewBindingAlreadyExistsError(nil)
 		}
 		b.StderrLogger.Println("Error creating topic: " + err.Error())
 		return serviceadapter.Binding{}, errors.New("")

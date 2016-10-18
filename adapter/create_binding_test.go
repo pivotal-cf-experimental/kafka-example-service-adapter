@@ -72,7 +72,7 @@ var _ = Describe("Create", func() {
 			})
 
 			It("returns an error to the cli user", func() {
-				Expect(bindErr).To(Equal(serviceadapter.NewBindingAlreadyExistsError()))
+				Expect(bindErr).To(Equal(serviceadapter.NewBindingAlreadyExistsError(nil)))
 			})
 
 			It("logs an error for the operator", func() {
