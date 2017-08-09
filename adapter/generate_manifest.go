@@ -113,7 +113,18 @@ func (a *ManifestGenerator) GenerateManifest(serviceDeployment serviceadapter.Se
 			"deployment": serviceDeployment.DeploymentName,
 		}
 		manifestProperties["loggregator"] = map[interface{}]interface{}{
+			"tls": map[interface{}]interface{}{
+				"metron": map[interface{}]interface{}{
+					"cert": logging["loggregator_tls_metron_cert"],
+					"key":  logging["loggregator_tls_metron_key"],
+				},
+				"ca_cert": logging["loggregator_tls_ca_cert"],
+			},
+			"loggregator_endpoint": map[interface{}]interface{}{
+				"shared_secret": logging["loggregator_etcd_addresses"].([]interface{}),
+			},
 			"etcd": map[interface{}]interface{}{
+				"ca_cert":  logging["loggregator_etcd_ca_cert"],
 				"machines": logging["loggregator_etcd_addresses"].([]interface{}),
 			},
 		}
