@@ -121,7 +121,7 @@ func (a *ManifestGenerator) GenerateManifest(serviceDeployment serviceadapter.Se
 				"ca_cert": logging["loggregator_tls_ca_cert"],
 			},
 			"loggregator_endpoint": map[interface{}]interface{}{
-				"shared_secret": logging["loggregator_etcd_addresses"].([]interface{}),
+				"shared_secret": logging["loggregator_shared_secret"],
 			},
 			"etcd": map[interface{}]interface{}{
 				"ca_cert":  logging["loggregator_etcd_ca_cert"],

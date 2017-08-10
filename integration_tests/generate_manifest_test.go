@@ -733,7 +733,11 @@ properties:
 								"syslog_address": "syslog_ip_adddress",
 								"syslog_port": 1234,
 								"loggregator_etcd_addresses": ["195.99.147.120"],
-								"loggregator_shared_secret": "DonCossack"
+								"loggregator_shared_secret": "DonCossack",
+								"loggregator_etcd_ca_cert": "LOGGREGATOR ETCD CA CERT",
+								"loggregator_tls_ca_cert": "LOGGREGATOR TLS CA CERT",
+								"loggregator_tls_metron_cert": "LOGGREGATOR TLS METRON CERT",
+								"loggregator_tls_metron_key": "LOGGREGATOR TLS METRON KEY"
 							}
 						}
 					}`
@@ -777,7 +781,18 @@ properties:
 					}))
 					Expect(manifest.Properties).To(HaveKeyWithValue("loggregator", map[interface{}]interface{}{
 						"etcd": map[interface{}]interface{}{
+							"ca_cert":  "LOGGREGATOR ETCD CA CERT",
 							"machines": []interface{}{"195.99.147.120"},
+						},
+						"loggregator_endpoint": map[interface{}]interface{}{
+							"shared_secret": "DonCossack",
+						},
+						"tls": map[interface{}]interface{}{
+							"metron": map[interface{}]interface{}{
+								"cert": "LOGGREGATOR TLS METRON CERT",
+								"key":  "LOGGREGATOR TLS METRON KEY",
+							},
+							"ca_cert": "LOGGREGATOR TLS CA CERT",
 						},
 					}))
 					Expect(manifest.Properties).To(HaveKeyWithValue("metron_endpoint", map[interface{}]interface{}{
