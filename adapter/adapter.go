@@ -18,3 +18,4 @@ type Binder struct {
 }
 
 var InstanceGroupMapper = serviceadapter.GenerateInstanceGroupsWithNoProperties
+var MinServiceReleaseVersion = "0.16.0"

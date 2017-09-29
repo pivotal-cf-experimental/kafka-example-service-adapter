@@ -1,7 +1,7 @@
 ---
 name: some-name
 
-releases: [{name: kafka, version: 0+dev.1}]
+releases: [{name: kafka, version: 9.2.1}]
 
 stemcells:
 - alias: &stemcell only-stemcell

@@ -45,7 +45,7 @@ var _ = Describe("generate-manifest subcommand", func() {
 			"deployment_name": "%s",
 			"releases": [{
 				"name": "kafka",
-				"version": "0+dev.1",
+				"version": "9.2.1",
 				"jobs": ["kafka_server", "zookeeper_server", "smoke_tests"]
 			}],
 			"stemcell": {
@@ -676,6 +676,76 @@ properties:
 					Expect(manifest.Update.UpdateWatchTime).To(Equal("1000-3000"))
 					Expect(manifest.Update.Serial).To(BeNil())
 				})
+
+				Context("with a release that satisfies minimum version", func() {
+
+					BeforeEach(func() {
+						serviceDeployment = fmt.Sprintf(`{
+							"deployment_name": "%s",
+							"releases": [{
+								"name": "kafka",
+								"version": "0.16.0",
+								"jobs": ["kafka_server", "zookeeper_server", "smoke_tests"]
+							}],
+							"stemcell": {
+								"stemcell_os": "Windows",
+								"stemcell_version": "3.1"
+							}
+						}`, deploymentName)
+					})
+
+					It("should successfully generate manifest", func() {
+						var manifest bosh.BoshManifest
+						Expect(yaml.Unmarshal(stdout.Bytes(), &manifest)).To(Succeed())
+						Expect(exitCode).To(Equal(0))
+					})
+				})
+
+				Context("with a release that is lower than minimum version", func() {
+
+					BeforeEach(func() {
+						serviceDeployment = fmt.Sprintf(`{
+							"deployment_name": "%s",
+							"releases": [{
+								"name": "kafka",
+								"version": "0.15.0",
+								"jobs": ["kafka_server", "zookeeper_server", "smoke_tests"]
+							}],
+							"stemcell": {
+								"stemcell_os": "Windows",
+								"stemcell_version": "3.1"
+							}
+						}`, deploymentName)
+					})
+
+					It("should fail and log version error", func() {
+						Expect(exitCode).NotTo(Equal(0))
+						Expect(stderr.String()).To(ContainSubstring("minimum release version not met: >= kafka-service-release"))
+					})
+				})
+
+				Context("with no kafka_server job provided", func() {
+
+					BeforeEach(func() {
+						serviceDeployment = fmt.Sprintf(`{
+							"deployment_name": "%s",
+							"releases": [{
+								"name": "kafka",
+								"version": "0.15.0",
+								"jobs": ["zookeeper_server", "smoke_tests"]
+							}],
+							"stemcell": {
+								"stemcell_os": "Windows",
+								"stemcell_version": "3.1"
+							}
+						}`, deploymentName)
+					})
+
+					It("should fail and log job not provided", func() {
+						Expect(exitCode).NotTo(Equal(0))
+						Expect(stderr.String()).To(ContainSubstring("'kafka_server' not provided"))
+					})
+				})
 			})
 		})
 
@@ -685,7 +755,7 @@ properties:
 					"deployment_name": "%s",
 					"releases": [{
 						"name": "kafka",
-						"version": "0+dev.1",
+						"version": "9.2.1",
 						"jobs": ["kafka_server", "zookeeper_server"]
 					},{
 						"name": "some-metron-release",
@@ -747,7 +817,7 @@ properties:
 					var manifest bosh.BoshManifest
 					Expect(yaml.Unmarshal(stdout.Bytes(), &manifest)).To(Succeed())
 					Expect(manifest.Releases).To(ConsistOf(
-						bosh.Release{Name: "kafka", Version: "0+dev.1"},
+						bosh.Release{Name: "kafka", Version: "9.2.1"},
 						bosh.Release{Name: "some-metron-release", Version: "2000"},
 					))
 				})
@@ -1064,7 +1134,7 @@ properties:
 						"deployment_name": "%s",
 						"releases": [{
 							"name": "kafka",
-							"version": "0+dev.1",
+							"version": "9.2.1",
 							"jobs": ["agshdj"]
 						}],
 						"stemcell": {

@@ -14,9 +14,23 @@ var _ = Describe("generating manifests", func() {
 	}
 
 	var (
+		serviceRelease             serviceadapter.ServiceRelease
+		serviceDeployment          serviceadapter.ServiceDeployment
+		generatedInstanceGroups    []bosh.InstanceGroup
+		planInstanceGroups         []serviceadapter.InstanceGroup
+		previousPlanInstanceGroups []serviceadapter.InstanceGroup
+		manifest                   bosh.BoshManifest
+		generateErr                error
+		plan                       serviceadapter.Plan
+		actualInstanceGroups       []serviceadapter.InstanceGroup
+		actualServiceReleases      serviceadapter.ServiceReleases
+		actualStemcell             string
+	)
+
+	BeforeEach(func() {
 		serviceRelease = serviceadapter.ServiceRelease{
 			Name:    "wicked-release",
-			Version: "4",
+			Version: "0.16.0",
 			Jobs:    []string{"kafka_server"},
 		}
 		serviceDeployment = serviceadapter.ServiceDeployment{
@@ -40,20 +54,7 @@ var _ = Describe("generating manifests", func() {
 			},
 		}
 		previousPlanInstanceGroups = []serviceadapter.InstanceGroup{}
-
-		manifest    bosh.BoshManifest
-		generateErr error
-		plan        serviceadapter.Plan
-
-		actualInstanceGroups  []serviceadapter.InstanceGroup
-		actualServiceReleases serviceadapter.ServiceReleases
-		actualStemcell        string
-	)
-
-	BeforeEach(func() {
 		plan = serviceadapter.Plan{InstanceGroups: planInstanceGroups}
-	})
-	BeforeEach(func() {
 		adapter.InstanceGroupMapper = func(instanceGroups []serviceadapter.InstanceGroup,
 			serviceReleases serviceadapter.ServiceReleases,
 			stemcell string,
@@ -63,6 +64,7 @@ var _ = Describe("generating manifests", func() {
 			actualStemcell = stemcell
 			return generatedInstanceGroups, nil
 		}
+		adapter.MinServiceReleaseVersion = "0.16.0"
 	})
 
 	Context("when the instance group mapper maps instance groups successfully", func() {
@@ -124,6 +126,47 @@ var _ = Describe("generating manifests", func() {
 			Expect(manifest.Update.CanaryWatchTime).To(Equal("30000-240000"))
 			Expect(manifest.Update.UpdateWatchTime).To(Equal("30000-240000"))
 			Expect(manifest.Update.Serial).To(Equal(boolPointer(false)))
+		})
+	})
+
+	Context("minimum service release version validation", func() {
+		It("fails when service release < min required", func() {
+			serviceRelease.Version = "0.15.0"
+			serviceDeployment.Releases = serviceadapter.ServiceReleases{serviceRelease}
+			manifest, generateErr = manifestGenerator.GenerateManifest(serviceDeployment, plan, map[string]interface{}{}, nil, nil)
+			Expect(generateErr).To(HaveOccurred())
+		})
+
+		It("succeeds when service release == min required", func() {
+			serviceRelease.Version = "0.16.0"
+			serviceDeployment.Releases = serviceadapter.ServiceReleases{serviceRelease}
+			manifest, generateErr = manifestGenerator.GenerateManifest(serviceDeployment, plan, map[string]interface{}{}, nil, nil)
+			Expect(generateErr).ToNot(HaveOccurred())
+		})
+
+		It("succeeds when service release > min required", func() {
+			serviceRelease.Version = "0.100.0"
+			serviceDeployment.Releases = serviceadapter.ServiceReleases{serviceRelease}
+			manifest, generateErr = manifestGenerator.GenerateManifest(serviceDeployment, plan, map[string]interface{}{}, nil, nil)
+			Expect(generateErr).ToNot(HaveOccurred())
+		})
+
+		It("ignores version validation with invalid semver versions", func() {
+			serviceRelease.Version = "0+dev.1"
+			serviceDeployment.Releases = serviceadapter.ServiceReleases{serviceRelease}
+			stderr.Reset()
+			manifest, generateErr = manifestGenerator.GenerateManifest(serviceDeployment, plan, map[string]interface{}{}, nil, nil)
+			Expect(generateErr).ToNot(HaveOccurred())
+			Expect(stderr.String()).To(ContainSubstring("Skipping min service release version check"))
+		})
+
+		It("panics when MinServiceReleaseVersion is not a valid semver", func() {
+			adapter.MinServiceReleaseVersion = "0+dev.2"
+			serviceDeployment.Releases = serviceadapter.ServiceReleases{serviceRelease}
+			genMani := func() {
+				_, _ = manifestGenerator.GenerateManifest(serviceDeployment, plan, map[string]interface{}{}, nil, nil)
+			}
+			Expect(genMani).To(Panic())
 		})
 	})
 

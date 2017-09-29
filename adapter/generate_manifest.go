@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/coreos/go-semver/semver"
 	"github.com/pivotal-cf/on-demand-services-sdk/bosh"
 	"github.com/pivotal-cf/on-demand-services-sdk/serviceadapter"
 )
@@ -19,7 +20,8 @@ func defaultDeploymentInstanceGroupsToJobs() map[string][]string {
 	}
 }
 
-func (a *ManifestGenerator) GenerateManifest(serviceDeployment serviceadapter.ServiceDeployment,
+func (a *ManifestGenerator) GenerateManifest(
+	serviceDeployment serviceadapter.ServiceDeployment,
 	servicePlan serviceadapter.Plan,
 	requestParams serviceadapter.RequestParameters,
 	previousManifest *bosh.BoshManifest,
@@ -67,6 +69,25 @@ func (a *ManifestGenerator) GenerateManifest(serviceDeployment serviceadapter.Se
 	if err != nil {
 		a.StderrLogger.Println(err.Error())
 		return bosh.BoshManifest{}, errors.New("")
+	}
+
+	kafkaServerRelease, err := serviceadapter.FindReleaseForJob("kafka_server", serviceDeployment.Releases)
+
+	if err != nil {
+		a.StderrLogger.Println("Cannot determine kafka_server release", err.Error())
+		return bosh.BoshManifest{}, errors.New("")
+	}
+
+	minVersion := semver.New(MinServiceReleaseVersion)
+	actualVersion, err := semver.NewVersion(kafkaServerRelease.Version)
+	if err != nil {
+		a.StderrLogger.Printf("Skipping min service release version check. Release version '%s' is not valid semver\n", kafkaServerRelease.Version)
+	} else {
+		if actualVersion.LessThan(*minVersion) {
+			err = fmt.Errorf("minimum release version not met: >= kafka-service-release %s required", MinServiceReleaseVersion)
+			a.StderrLogger.Printf(err.Error())
+			return bosh.BoshManifest{}, err
+		}
 	}
 
 	kafkaBrokerInstanceGroup := &instanceGroups[0]
