@@ -7,6 +7,11 @@
 	],
 	"Deps": [
 		{
+			"ImportPath": "github.com/coreos/go-semver/semver",
+			"Comment": "v0.2.0-7-g1817cd4",
+			"Rev": "1817cd4bea52af76542157eeabd74b057d1a199e"
+		},
+		{
 			"ImportPath": "github.com/eapache/go-resiliency/breaker",
 			"Comment": "v1.0.0-4-gb86b1ec",
 			"Rev": "b86b1ec0dd4209a588dc1285cdd471e73525c0b3"
