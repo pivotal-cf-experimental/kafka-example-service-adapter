@@ -2,6 +2,11 @@
 
 
 [[projects]]
+  name = "code.cloudfoundry.org/lager"
+  packages = ["."]
+  revision = "0bfa98e49e7a976af91e918d47978f07c00b081f"
+
+[[projects]]
   branch = "master"
   name = "github.com/coreos/go-semver"
   packages = ["semver"]
@@ -24,6 +29,18 @@
   revision = "5f1c01d9f64b941dd9582c638279d046eda6ca31"
 
 [[projects]]
+  name = "github.com/gorilla/context"
+  packages = ["."]
+  revision = "1ea25387ff6f684839d82767c1733ff4d4d15d0a"
+  version = "v1.1"
+
+[[projects]]
+  name = "github.com/gorilla/mux"
+  packages = ["."]
+  revision = "7f08801859139f86dfafd1c296e2cba9a80d292e"
+  version = "v1.6.0"
+
+[[projects]]
   name = "github.com/klauspost/crc32"
   packages = ["."]
   revision = "19b0b332c9e4516a6370a0456e6182c3b5036720"
@@ -40,9 +57,16 @@
   revision = "9ed8da19f2156b87a803a8fdf6d126f627a12db1"
 
 [[projects]]
+  branch = "master"
+  name = "github.com/pivotal-cf/brokerapi"
+  packages = [".","auth"]
+  revision = "61af3c362c579b641bbffd7cb6355e5c4bfa5eda"
+
+[[projects]]
+  branch = "master"
   name = "github.com/pivotal-cf/on-demand-services-sdk"
   packages = ["bosh","serviceadapter"]
-  revision = "ec7f14661af888f543a3eebf00dace4ae2aaae93"
+  revision = "5b0b49a21e85fd4fba200763340886e53128b13a"
 
 [[projects]]
   name = "golang.org/x/sys"
@@ -58,8 +82,8 @@
 [[projects]]
   name = "gopkg.in/go-playground/validator.v8"
   packages = ["."]
-  revision = "014792cf3e266caff1e916876be12282b33059e0"
-  version = "v8.17.1"
+  revision = "5f1438d3fca68893a817e4a66806cea46a9e4ebf"
+  version = "v8.18.2"
 
 [[projects]]
   name = "gopkg.in/yaml.v2"
@@ -69,6 +93,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "ed8ebba9910130c1b545624a3ee764f43f23920a2e38a662a2c697d4d84d0cd3"
+  inputs-digest = "93e6503e9a196ad62a609f4caa25a6dc4b9872fb481d5f191e0bae27c2a2ff80"
   solver-name = "gps-cdcl"
   solver-version = 1

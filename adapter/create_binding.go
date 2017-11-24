@@ -15,6 +15,9 @@ import (
 func (b *Binder) CreateBinding(bindingId string, boshVMs bosh.BoshVMs, manifest bosh.BoshManifest, requestParams serviceadapter.RequestParameters) (serviceadapter.Binding, error) {
 	params := requestParams.ArbitraryParams()
 
+	bindResource := requestParams.BindResource()
+	b.StderrLogger.Printf("Bind Resource with app GUID: %s, credential client ID: %s, route: %s\n", bindResource.AppGuid, bindResource.CredentialClientID, bindResource.Route)
+
 	var invalidParams []string
 	for paramKey, _ := range params {
 		if paramKey != "topic" {

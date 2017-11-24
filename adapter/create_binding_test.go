@@ -24,7 +24,11 @@ var _ = Describe("Create", func() {
 
 	Context("when there are vms", func() {
 		BeforeEach(func() {
-			requestParameters = map[string]interface{}{}
+			requestParameters = map[string]interface{}{"bind_resource": map[string]interface{}{
+				"app_guid":             "wun",
+				"credential_client_id": "too",
+				"route":                "free",
+			}}
 			boshVMs = map[string][]string{"kafka_server": {"foo", "bar"}, "zookeeper_server": {"baz", "joe"}}
 		})
 
@@ -38,6 +42,10 @@ var _ = Describe("Create", func() {
 					Credentials: map[string]interface{}{"bootstrap_servers": []interface{}{"foo:9092", "bar:9092"}},
 				},
 			))
+		})
+
+		It("logs the resource binding", func() {
+			Expect(stderr.String()).To(ContainSubstring("Bind Resource with app GUID: wun, credential client ID: too, route: free"))
 		})
 
 		It("creates a topic with binding id as name", func() {
