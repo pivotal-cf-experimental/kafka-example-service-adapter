@@ -154,7 +154,7 @@ func (a *ManifestGenerator) GenerateManifest(
 		}
 	}
 
-	var updateBlock = bosh.Update{
+	updateBlock := &bosh.Update{
 		Canaries:        1,
 		MaxInFlight:     10,
 		CanaryWatchTime: "30000-240000",
@@ -163,7 +163,7 @@ func (a *ManifestGenerator) GenerateManifest(
 	}
 
 	if servicePlan.Update != nil {
-		updateBlock = bosh.Update{
+		updateBlock = &bosh.Update{
 			Canaries:        servicePlan.Update.Canaries,
 			MaxInFlight:     servicePlan.Update.MaxInFlight,
 			CanaryWatchTime: servicePlan.Update.CanaryWatchTime,
