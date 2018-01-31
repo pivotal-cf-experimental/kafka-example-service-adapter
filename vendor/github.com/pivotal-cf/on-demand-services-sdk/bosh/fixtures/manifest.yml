@@ -72,3 +72,7 @@ update:
 tags:
   quadrata: parrot
   secondTag: tagValue
+features:
+  randomize_az_placement: true
+  use_short_dns_addresses: false
+  another_feature: ok
