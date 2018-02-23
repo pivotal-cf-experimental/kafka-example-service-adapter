@@ -27,5 +27,12 @@ func main() {
 		TopicDeleterCommand: topicDeleterCommand,
 		StderrLogger:        stderrLogger,
 	}
-	serviceadapter.HandleCommandLineInvocation(os.Args, manifestGenerator, binder, &adapter.DashboardUrlGenerator{})
+
+	handler := serviceadapter.CommandLineHandler{
+		ManifestGenerator:     manifestGenerator,
+		Binder:                binder,
+		DashboardURLGenerator: &adapter.DashboardUrlGenerator{},
+		SchemaGenerator:       adapter.SchemaGenerator{},
+	}
+	serviceadapter.HandleCLI(os.Args, handler)
 }
