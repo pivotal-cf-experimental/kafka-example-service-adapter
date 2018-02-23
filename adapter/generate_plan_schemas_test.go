@@ -63,7 +63,7 @@ var _ = Describe("Adapter/GenerateDashboardUrl", func() {
 	It("fails with an error if the plan is unknown", func() {
 		plan := serviceadapter.Plan{
 			Properties: serviceadapter.Properties{
-				"name": "unknown",
+				"service_adapter_fails": true,
 			},
 		}
 		generator := &adapter.SchemaGenerator{}

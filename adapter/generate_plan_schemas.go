@@ -9,7 +9,7 @@ import (
 type SchemaGenerator struct{}
 
 func (s SchemaGenerator) GeneratePlanSchema(plan serviceadapter.Plan) (serviceadapter.PlanSchema, error) {
-	if plan.Properties["name"] == "unknown" {
+	if plan.Properties["service_adapter_fails"] == true {
 		return serviceadapter.PlanSchema{}, errors.New("Cannot generate the schema")
 	}
 	schemas := serviceadapter.JSONSchemas{
