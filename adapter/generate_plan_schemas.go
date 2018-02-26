@@ -14,8 +14,9 @@ func (s SchemaGenerator) GeneratePlanSchema(plan serviceadapter.Plan) (servicead
 	}
 	schemas := serviceadapter.JSONSchemas{
 		Parameters: map[string]interface{}{
-			"$schema": "http://json-schema.org/draft-04/schema#",
-			"type":    "object",
+			"$schema":              "http://json-schema.org/draft-04/schema#",
+			"type":                 "object",
+			"additionalProperties": false,
 			"properties": map[string]interface{}{
 				"auto_create_topics": map[string]interface{}{
 					"description": "Auto create topics",
@@ -32,8 +33,9 @@ func (s SchemaGenerator) GeneratePlanSchema(plan serviceadapter.Plan) (servicead
 	}
 	bindSchema := serviceadapter.JSONSchemas{
 		Parameters: map[string]interface{}{
-			"$schema": "http://json-schema.org/draft-04/schema#",
-			"type":    "object",
+			"$schema":              "http://json-schema.org/draft-04/schema#",
+			"type":                 "object",
+			"additionalProperties": false,
 			"properties": map[string]interface{}{
 				"topic": map[string]interface{}{
 					"description": "The name of the topic",

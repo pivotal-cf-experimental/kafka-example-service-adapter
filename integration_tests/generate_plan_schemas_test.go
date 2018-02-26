@@ -50,6 +50,7 @@ var _ = Describe("generate-plan-schemas subcommand", func() {
           "create": {
             "parameters": {
               "$schema": "http://json-schema.org/draft-04/schema#",
+              "additionalProperties": false,
               "properties": {
                 "auto_create_topics": {
                   "description": "Auto create topics",
@@ -68,6 +69,7 @@ var _ = Describe("generate-plan-schemas subcommand", func() {
           "update": {
             "parameters": {
               "$schema": "http://json-schema.org/draft-04/schema#",
+              "additionalProperties": false,
               "properties": {
                 "auto_create_topics": {
                   "description": "Auto create topics",
@@ -88,6 +90,7 @@ var _ = Describe("generate-plan-schemas subcommand", func() {
           "create": {
             "parameters": {
               "$schema": "http://json-schema.org/draft-04/schema#",
+              "additionalProperties": false,
               "properties": {
                 "topic": {
                   "description": "The name of the topic",

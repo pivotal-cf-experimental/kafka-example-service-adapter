@@ -8,7 +8,7 @@ import (
 	. "github.com/onsi/gomega"
 )
 
-var _ = Describe("Adapter/GenerateDashboardUrl", func() {
+var _ = Describe("Adapter/GeneratePlanSchemas", func() {
 	It("generates schemas", func() {
 		plan := serviceadapter.Plan{
 			Properties: serviceadapter.Properties{
@@ -17,8 +17,9 @@ var _ = Describe("Adapter/GenerateDashboardUrl", func() {
 		}
 		schemas := serviceadapter.JSONSchemas{
 			Parameters: map[string]interface{}{
-				"$schema": "http://json-schema.org/draft-04/schema#",
-				"type":    "object",
+				"$schema":              "http://json-schema.org/draft-04/schema#",
+				"type":                 "object",
+				"additionalProperties": false,
 				"properties": map[string]interface{}{
 					"auto_create_topics": map[string]interface{}{
 						"description": "Auto create topics",
@@ -35,8 +36,9 @@ var _ = Describe("Adapter/GenerateDashboardUrl", func() {
 		}
 		bindSchema := serviceadapter.JSONSchemas{
 			Parameters: map[string]interface{}{
-				"$schema": "http://json-schema.org/draft-04/schema#",
-				"type":    "object",
+				"$schema":              "http://json-schema.org/draft-04/schema#",
+				"type":                 "object",
+				"additionalProperties": false,
 				"properties": map[string]interface{}{
 					"topic": map[string]interface{}{
 						"description": "The name of the topic",
