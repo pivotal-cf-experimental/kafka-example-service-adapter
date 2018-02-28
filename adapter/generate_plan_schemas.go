@@ -20,13 +20,11 @@ func (s SchemaGenerator) GeneratePlanSchema(plan serviceadapter.Plan) (servicead
 			"properties": map[string]interface{}{
 				"auto_create_topics": map[string]interface{}{
 					"description": "Auto create topics",
-					"type":        "bool",
-					"required":    false,
+					"type":        "boolean",
 				},
 				"default_replication_factor": map[string]interface{}{
 					"description": "Replication factor",
 					"type":        "integer",
-					"required":    false,
 				},
 			},
 		},
@@ -40,7 +38,6 @@ func (s SchemaGenerator) GeneratePlanSchema(plan serviceadapter.Plan) (servicead
 				"topic": map[string]interface{}{
 					"description": "The name of the topic",
 					"type":        "string",
-					"required":    false,
 				},
 			},
 		},

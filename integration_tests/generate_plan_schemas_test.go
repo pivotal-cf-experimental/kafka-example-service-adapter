@@ -54,12 +54,10 @@ var _ = Describe("generate-plan-schemas subcommand", func() {
               "properties": {
                 "auto_create_topics": {
                   "description": "Auto create topics",
-                  "required": false,
-                  "type": "bool"
+                  "type": "boolean"
                 },
                 "default_replication_factor": {
                   "description": "Replication factor",
-                  "required": false,
                   "type": "integer"
                 }
               },
@@ -73,12 +71,10 @@ var _ = Describe("generate-plan-schemas subcommand", func() {
               "properties": {
                 "auto_create_topics": {
                   "description": "Auto create topics",
-                  "required": false,
-                  "type": "bool"
+                  "type": "boolean"
                 },
                 "default_replication_factor": {
                   "description": "Replication factor",
-                  "required": false,
                   "type": "integer"
                 }
               },
@@ -94,7 +90,6 @@ var _ = Describe("generate-plan-schemas subcommand", func() {
               "properties": {
                 "topic": {
                   "description": "The name of the topic",
-                  "required": false,
                   "type": "string"
                 }
               },

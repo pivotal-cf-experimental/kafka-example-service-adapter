@@ -23,13 +23,11 @@ var _ = Describe("Adapter/GeneratePlanSchemas", func() {
 				"properties": map[string]interface{}{
 					"auto_create_topics": map[string]interface{}{
 						"description": "Auto create topics",
-						"type":        "bool",
-						"required":    false,
+						"type":        "boolean",
 					},
 					"default_replication_factor": map[string]interface{}{
 						"description": "Replication factor",
 						"type":        "integer",
-						"required":    false,
 					},
 				},
 			},
@@ -43,7 +41,6 @@ var _ = Describe("Adapter/GeneratePlanSchemas", func() {
 					"topic": map[string]interface{}{
 						"description": "The name of the topic",
 						"type":        "string",
-						"required":    false,
 					},
 				},
 			},
