@@ -23,12 +23,15 @@
 
 [[constraint]]
   name = "github.com/coreos/go-semver"
+  version = "0.2.0"
 
 [[constraint]]
   name = "github.com/onsi/ginkgo"
+  version = "1.4.0"
 
 [[constraint]]
   name = "github.com/onsi/gomega"
+  version = "1.2.0"
 
 [[constraint]]
   name = "github.com/pivotal-cf/on-demand-services-sdk"
@@ -39,4 +42,5 @@
   version = "1.8.0"
 
 [[constraint]]
+  branch = "v2"
   name = "gopkg.in/yaml.v2"
