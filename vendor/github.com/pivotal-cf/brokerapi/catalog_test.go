@@ -2,6 +2,7 @@ package brokerapi_test
 
 import (
 	"encoding/json"
+	"reflect"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
@@ -171,8 +172,7 @@ var _ = Describe("Catalog", func() {
 
 				err := json.Unmarshal([]byte(jsonString), &metadata)
 				Expect(err).NotTo(HaveOccurred())
-				Expect(metadata.AdditionalMetadata).To(BeEmpty())
-
+				Expect(metadata.AdditionalMetadata).To(BeNil())
 			})
 		})
 	})
@@ -220,6 +220,7 @@ var _ = Describe("Catalog", func() {
 				Expect(json.Marshal(metadata)).To(MatchJSON(jsonString))
 			})
 		})
+
 		Describe("JSON decoding", func() {
 			It("sets the AdditionalMetadata from unrecognized fields", func() {
 				metadata := brokerapi.ServiceMetadata{}
@@ -244,9 +245,20 @@ var _ = Describe("Catalog", func() {
 				}`
 				err := json.Unmarshal([]byte(jsonString), &metadata)
 				Expect(err).NotTo(HaveOccurred())
-				Expect(metadata.AdditionalMetadata).To(BeEmpty())
-
+				Expect(metadata.AdditionalMetadata).To(BeNil())
 			})
 		})
+	})
+
+	It("Reflects JSON names from struct", func() {
+		type Example1 struct {
+			Foo int    `json:"foo"`
+			Bar string `yaml:"hello" json:"bar,omitempty"`
+			Qux float64
+		}
+
+		s := Example1{}
+		Expect(brokerapi.GetJsonNames(reflect.ValueOf(&s).Elem())).To(
+			ConsistOf([]string{"foo", "bar", "Qux"}))
 	})
 })
