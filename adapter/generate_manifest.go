@@ -109,7 +109,9 @@ func (a *ManifestGenerator) GenerateManifest(
 	}
 
 	defaultReplicationFactor := 3
-	if val, ok := servicePlan.Properties["default_replication_factor"]; ok {
+	if arbitraryVal, ok := arbitraryParameters["default_replication_factor"]; ok {
+		defaultReplicationFactor = int(arbitraryVal.(float64))
+	} else if val, ok := servicePlan.Properties["default_replication_factor"]; ok {
 		defaultReplicationFactor = int(val.(float64))
 	}
 

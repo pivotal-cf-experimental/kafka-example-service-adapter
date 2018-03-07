@@ -68,8 +68,16 @@ var _ = Describe("generating manifests", func() {
 	})
 
 	Context("when the instance group mapper maps instance groups successfully", func() {
+		var (
+			requestParams map[string]interface{}
+		)
+
+		BeforeEach(func() {
+			requestParams = map[string]interface{}{}
+		})
+
 		JustBeforeEach(func() {
-			manifest, generateErr = manifestGenerator.GenerateManifest(serviceDeployment, plan, map[string]interface{}{}, nil, nil)
+			manifest, generateErr = manifestGenerator.GenerateManifest(serviceDeployment, plan, requestParams, nil, nil)
 		})
 
 		It("returns no error", func() {
@@ -111,6 +119,21 @@ var _ = Describe("generating manifests", func() {
 			})
 			It("overrides the value in the manifest", func() {
 				Expect(manifest.InstanceGroups[0].Jobs[0].Properties).To(HaveKeyWithValue("default_replication_factor", 55))
+			})
+		})
+
+		Context("the plan property default_replication_factor is specified and it is overridden by request params", func() {
+			BeforeEach(func() {
+				plan.Properties = map[string]interface{}{"default_replication_factor": 55.0} // JSON has no integers
+				requestParams = map[string]interface{}{
+					"parameters": map[string]interface{}{
+						"default_replication_factor": 42.0,
+					},
+				}
+			})
+
+			It("overrides the value in the manifest", func() {
+				Expect(manifest.InstanceGroups[0].Jobs[0].Properties).To(HaveKeyWithValue("default_replication_factor", 42))
 			})
 		})
 
