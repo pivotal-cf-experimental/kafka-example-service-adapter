@@ -115,11 +115,16 @@ func (a *ManifestGenerator) GenerateManifest(
 		defaultReplicationFactor = int(val.(float64))
 	}
 
+	serviceAdapterFails := false
+	if val, ok := servicePlan.Properties["service_adapter_fails"]; ok {
+		serviceAdapterFails = val.(bool)
+	}
 	if kafkaBrokerJob, ok := getJobFromInstanceGroup("kafka_server", kafkaBrokerInstanceGroup); ok {
 		kafkaBrokerJob.Properties = map[string]interface{}{
 			"default_replication_factor": defaultReplicationFactor,
 			"auto_create_topics":         autoCreateTopics,
 			"network":                    kafkaBrokerInstanceGroup.Networks[0].Name,
+			"service_adapter_fails":      serviceAdapterFails,
 		}
 	}
 

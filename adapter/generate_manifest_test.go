@@ -113,6 +113,15 @@ var _ = Describe("generating manifests", func() {
 			})
 		})
 
+		Context("the plan property service_adapter_fails is specified", func() {
+			BeforeEach(func() {
+				plan.Properties = map[string]interface{}{"service_adapter_fails": true}
+			})
+			It("overrides the value in the manifest", func() {
+				Expect(manifest.InstanceGroups[0].Jobs[0].Properties).To(HaveKeyWithValue("service_adapter_fails", true))
+			})
+		})
+
 		Context("the plan property default_replication_factor is specified", func() {
 			BeforeEach(func() {
 				plan.Properties = map[string]interface{}{"default_replication_factor": 55.0} // JSON has no integers
