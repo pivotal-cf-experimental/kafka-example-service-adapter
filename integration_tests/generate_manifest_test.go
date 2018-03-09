@@ -828,7 +828,10 @@ properties:
 
 					Expect(manifest.InstanceGroups[0].Jobs).To(ConsistOf(
 						bosh.Job{Name: "kafka_server", Release: "kafka", Properties: map[string]interface{}{
-							"default_replication_factor": 3, "auto_create_topics": true, "network": "example-network",
+							"default_replication_factor": 3,
+							"auto_create_topics":         true,
+							"network":                    "example-network",
+							"service_adapter_fails":      false,
 						}},
 						bosh.Job{Name: "metron_agent", Release: "some-metron-release"},
 					))
@@ -881,6 +884,7 @@ properties:
 							"default_replication_factor": 3,
 							"auto_create_topics":         true,
 							"network":                    "example-network",
+							"service_adapter_fails":      false,
 						}},
 					))
 					Expect(manifest.InstanceGroups[1].Jobs).To(ConsistOf(

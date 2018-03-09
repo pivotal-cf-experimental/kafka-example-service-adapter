@@ -18,6 +18,7 @@ instance_groups:
       default_replication_factor: 3
       auto_create_topics: true
       network: *network
+      service_adapter_fails: false
   vm_type: small
   persistent_disk_type: ten
   stemcell: *stemcell
