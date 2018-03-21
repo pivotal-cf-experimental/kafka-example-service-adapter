@@ -69,4 +69,45 @@ var _ = Describe("Adapter/GeneratePlanSchemas", func() {
 		_, err := generator.GeneratePlanSchema(plan)
 		Expect(err).To(HaveOccurred())
 	})
+
+	Describe("when schema_to_return is set", func() {
+		It("returns the supplied schema", func() {
+			plan := serviceadapter.Plan{
+				Properties: serviceadapter.Properties{
+					"schema_to_return": `{"foo": "bar"}`,
+				},
+			}
+			generator := &adapter.SchemaGenerator{}
+			schemas, err := generator.GeneratePlanSchema(plan)
+			Expect(err).NotTo(HaveOccurred())
+			expectedSchema := map[string]interface{}{
+				"foo": "bar",
+			}
+			Expect(schemas.ServiceInstance.Create.Parameters).To(Equal(expectedSchema))
+			Expect(schemas.ServiceInstance.Update.Parameters).To(Equal(expectedSchema))
+			Expect(schemas.ServiceBinding.Create.Parameters).To(Equal(expectedSchema))
+		})
+
+		It("fails if it's not a valid json", func() {
+			plan := serviceadapter.Plan{
+				Properties: serviceadapter.Properties{
+					"schema_to_return": `nop`,
+				},
+			}
+			generator := &adapter.SchemaGenerator{}
+			_, err := generator.GeneratePlanSchema(plan)
+			Expect(err).To(MatchError("Invalid 'schema_to_return' JSON"))
+		})
+
+		It("fails if it's not a string", func() {
+			plan := serviceadapter.Plan{
+				Properties: serviceadapter.Properties{
+					"schema_to_return": false,
+				},
+			}
+			generator := &adapter.SchemaGenerator{}
+			_, err := generator.GeneratePlanSchema(plan)
+			Expect(err).To(MatchError("'schema_to_return' must be a JSON string"))
+		})
+	})
 })
