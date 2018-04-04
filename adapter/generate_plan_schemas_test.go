@@ -19,7 +19,7 @@ var _ = Describe("Adapter/GeneratePlanSchemas", func() {
 			Parameters: map[string]interface{}{
 				"$schema":              "http://json-schema.org/draft-04/schema#",
 				"type":                 "object",
-				"additionalProperties": false,
+				"additionalProperties": true,
 				"properties": map[string]interface{}{
 					"auto_create_topics": map[string]interface{}{
 						"description": "Auto create topics",
