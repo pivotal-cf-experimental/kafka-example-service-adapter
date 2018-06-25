@@ -25,6 +25,7 @@ var _ = Describe("generating manifests", func() {
 		actualInstanceGroups       []serviceadapter.InstanceGroup
 		actualServiceReleases      serviceadapter.ServiceReleases
 		actualStemcell             string
+		output                     serviceadapter.GenerateManifestOutput
 	)
 
 	BeforeEach(func() {
@@ -77,7 +78,8 @@ var _ = Describe("generating manifests", func() {
 		})
 
 		JustBeforeEach(func() {
-			manifest, generateErr = manifestGenerator.GenerateManifest(serviceDeployment, plan, requestParams, nil, nil)
+			output, generateErr = manifestGenerator.GenerateManifest(serviceDeployment, plan, requestParams, nil, nil)
+			manifest = output.Manifest
 		})
 
 		It("returns no error", func() {
@@ -165,21 +167,21 @@ var _ = Describe("generating manifests", func() {
 		It("fails when service release < min required", func() {
 			serviceRelease.Version = "0.15.0"
 			serviceDeployment.Releases = serviceadapter.ServiceReleases{serviceRelease}
-			manifest, generateErr = manifestGenerator.GenerateManifest(serviceDeployment, plan, map[string]interface{}{}, nil, nil)
+			output, generateErr = manifestGenerator.GenerateManifest(serviceDeployment, plan, map[string]interface{}{}, nil, nil)
 			Expect(generateErr).To(HaveOccurred())
 		})
 
 		It("succeeds when service release == min required", func() {
 			serviceRelease.Version = "0.16.0"
 			serviceDeployment.Releases = serviceadapter.ServiceReleases{serviceRelease}
-			manifest, generateErr = manifestGenerator.GenerateManifest(serviceDeployment, plan, map[string]interface{}{}, nil, nil)
+			output, generateErr = manifestGenerator.GenerateManifest(serviceDeployment, plan, map[string]interface{}{}, nil, nil)
 			Expect(generateErr).ToNot(HaveOccurred())
 		})
 
 		It("succeeds when service release > min required", func() {
 			serviceRelease.Version = "0.100.0"
 			serviceDeployment.Releases = serviceadapter.ServiceReleases{serviceRelease}
-			manifest, generateErr = manifestGenerator.GenerateManifest(serviceDeployment, plan, map[string]interface{}{}, nil, nil)
+			output, generateErr = manifestGenerator.GenerateManifest(serviceDeployment, plan, map[string]interface{}{}, nil, nil)
 			Expect(generateErr).ToNot(HaveOccurred())
 		})
 
@@ -187,7 +189,7 @@ var _ = Describe("generating manifests", func() {
 			serviceRelease.Version = "0+dev.1"
 			serviceDeployment.Releases = serviceadapter.ServiceReleases{serviceRelease}
 			stderr.Reset()
-			manifest, generateErr = manifestGenerator.GenerateManifest(serviceDeployment, plan, map[string]interface{}{}, nil, nil)
+			output, generateErr = manifestGenerator.GenerateManifest(serviceDeployment, plan, map[string]interface{}{}, nil, nil)
 			Expect(generateErr).ToNot(HaveOccurred())
 			Expect(stderr.String()).To(ContainSubstring("Skipping min service release version check"))
 		})
@@ -213,7 +215,7 @@ var _ = Describe("generating manifests", func() {
 		JustBeforeEach(func() {
 			previousPlan = serviceadapter.Plan{InstanceGroups: previousPlanInstanceGroups}
 			stderr.Reset()
-			manifest, generateErr = manifestGenerator.GenerateManifest(serviceDeployment, plan, map[string]interface{}{"parameters": map[string]interface{}{}}, nil, &previousPlan)
+			output, generateErr = manifestGenerator.GenerateManifest(serviceDeployment, plan, map[string]interface{}{"parameters": map[string]interface{}{}}, nil, &previousPlan)
 		})
 
 		Context("when the previous plan had more zookeepers", func() {

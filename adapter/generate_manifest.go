@@ -26,14 +26,14 @@ func (a *ManifestGenerator) GenerateManifest(
 	requestParams serviceadapter.RequestParameters,
 	previousManifest *bosh.BoshManifest,
 	previousPlan *serviceadapter.Plan,
-) (bosh.BoshManifest, error) {
+) (serviceadapter.GenerateManifestOutput, error) {
 
 	if previousPlan != nil {
 		prev := instanceCounts(*previousPlan)
 		current := instanceCounts(servicePlan)
 		if (prev["kafka_server"] > current["kafka_server"]) || (prev["zookeeper_server"] > current["zookeeper_server"]) {
 			a.StderrLogger.Println("cannot migrate to a smaller plan")
-			return bosh.BoshManifest{}, errors.New("")
+			return serviceadapter.GenerateManifestOutput{}, errors.New("")
 		}
 	}
 
@@ -62,20 +62,20 @@ func (a *ManifestGenerator) GenerateManifest(
 	err := checkInstanceGroupsPresent([]string{"kafka_server", "zookeeper_server"}, servicePlan.InstanceGroups)
 	if err != nil {
 		a.StderrLogger.Println(err.Error())
-		return bosh.BoshManifest{}, errors.New("Contact your operator, service configuration issue occurred")
+		return serviceadapter.GenerateManifestOutput{}, errors.New("Contact your operator, service configuration issue occurred")
 	}
 
 	instanceGroups, err := InstanceGroupMapper(servicePlan.InstanceGroups, serviceDeployment.Releases, OnlyStemcellAlias, deploymentInstanceGroupsToJobs)
 	if err != nil {
 		a.StderrLogger.Println(err.Error())
-		return bosh.BoshManifest{}, errors.New("")
+		return serviceadapter.GenerateManifestOutput{}, errors.New("")
 	}
 
 	kafkaServerRelease, err := serviceadapter.FindReleaseForJob("kafka_server", serviceDeployment.Releases)
 
 	if err != nil {
 		a.StderrLogger.Println("Cannot determine kafka_server release", err.Error())
-		return bosh.BoshManifest{}, errors.New("")
+		return serviceadapter.GenerateManifestOutput{}, errors.New("")
 	}
 
 	minVersion := semver.New(MinServiceReleaseVersion)
@@ -86,7 +86,7 @@ func (a *ManifestGenerator) GenerateManifest(
 		if actualVersion.LessThan(*minVersion) {
 			err = fmt.Errorf("minimum release version not met: >= kafka-service-release %s required", MinServiceReleaseVersion)
 			a.StderrLogger.Printf(err.Error())
-			return bosh.BoshManifest{}, err
+			return serviceadapter.GenerateManifestOutput{}, err
 		}
 	}
 
@@ -94,7 +94,7 @@ func (a *ManifestGenerator) GenerateManifest(
 
 	if len(kafkaBrokerInstanceGroup.Networks) != 1 {
 		a.StderrLogger.Println(fmt.Sprintf("expected 1 network for %s, got %d", kafkaBrokerInstanceGroup.Name, len(kafkaBrokerInstanceGroup.Networks)))
-		return bosh.BoshManifest{}, errors.New("")
+		return serviceadapter.GenerateManifestOutput{}, errors.New("")
 	}
 
 	autoCreateTopics := true
@@ -179,7 +179,7 @@ func (a *ManifestGenerator) GenerateManifest(
 		}
 	}
 
-	return bosh.BoshManifest{
+	manifest := bosh.BoshManifest{
 		Name:     serviceDeployment.DeploymentName,
 		Releases: releases,
 		Stemcells: []bosh.Stemcell{{
@@ -190,6 +190,11 @@ func (a *ManifestGenerator) GenerateManifest(
 		InstanceGroups: instanceGroups,
 		Properties:     manifestProperties,
 		Update:         updateBlock,
+	}
+
+	return serviceadapter.GenerateManifestOutput{
+		Manifest:          manifest,
+		ODBManagedSecrets: serviceadapter.ODBManagedSecrets{},
 	}, nil
 }
 
