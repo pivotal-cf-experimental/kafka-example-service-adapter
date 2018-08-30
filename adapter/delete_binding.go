@@ -9,7 +9,9 @@ import (
 	"github.com/pivotal-cf/on-demand-services-sdk/serviceadapter"
 )
 
-func (b *Binder) DeleteBinding(bindingId string, boshVMs bosh.BoshVMs, manifest bosh.BoshManifest, requestParameters serviceadapter.RequestParameters) error {
+func (b *Binder) DeleteBinding(bindingId string, boshVMs bosh.BoshVMs, manifest bosh.BoshManifest, requestParameters serviceadapter.RequestParameters,
+	secrets serviceadapter.ManifestSecrets) error {
+
 	zookeeperServers := boshVMs["zookeeper_server"]
 	if len(zookeeperServers) == 0 {
 		b.StderrLogger.Println("no VMs for job zookeeper_server")

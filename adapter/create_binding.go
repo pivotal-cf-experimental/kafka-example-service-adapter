@@ -12,7 +12,9 @@ import (
 	"github.com/pivotal-cf/on-demand-services-sdk/serviceadapter"
 )
 
-func (b *Binder) CreateBinding(bindingId string, boshVMs bosh.BoshVMs, manifest bosh.BoshManifest, requestParams serviceadapter.RequestParameters, secrets serviceadapter.ManifestSecrets) (serviceadapter.Binding, error) {
+func (b *Binder) CreateBinding(bindingId string, boshVMs bosh.BoshVMs, manifest bosh.BoshManifest, requestParams serviceadapter.RequestParameters,
+	secrets serviceadapter.ManifestSecrets, dnsInfo serviceadapter.DNSAddresses) (serviceadapter.Binding, error) {
+
 	params := requestParams.ArbitraryParams()
 
 	bindResource := requestParams.BindResource()

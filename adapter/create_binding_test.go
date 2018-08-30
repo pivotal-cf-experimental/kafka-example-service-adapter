@@ -19,7 +19,7 @@ var _ = Describe("Create", func() {
 	)
 
 	JustBeforeEach(func() {
-		binding, bindErr = binder.CreateBinding("binding-id", boshVMs, bosh.BoshManifest{}, requestParameters, nil)
+		binding, bindErr = binder.CreateBinding("binding-id", boshVMs, bosh.BoshManifest{}, requestParameters, nil, nil)
 	})
 
 	Context("when there are vms", func() {
