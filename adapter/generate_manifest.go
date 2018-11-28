@@ -27,6 +27,7 @@ func (a *ManifestGenerator) GenerateManifest(
 	previousManifest *bosh.BoshManifest,
 	previousPlan *serviceadapter.Plan,
 	previousSecrets serviceadapter.ManifestSecrets,
+	previousConfigs serviceadapter.BOSHConfigs,
 ) (serviceadapter.GenerateManifestOutput, error) {
 
 	if previousPlan != nil {
