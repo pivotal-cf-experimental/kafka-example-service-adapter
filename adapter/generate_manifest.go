@@ -20,19 +20,11 @@ func defaultDeploymentInstanceGroupsToJobs() map[string][]string {
 	}
 }
 
-func (a *ManifestGenerator) GenerateManifest(
-	serviceDeployment serviceadapter.ServiceDeployment,
-	servicePlan serviceadapter.Plan,
-	requestParams serviceadapter.RequestParameters,
-	previousManifest *bosh.BoshManifest,
-	previousPlan *serviceadapter.Plan,
-	previousSecrets serviceadapter.ManifestSecrets,
-	previousConfigs serviceadapter.BOSHConfigs,
-) (serviceadapter.GenerateManifestOutput, error) {
+func (a *ManifestGenerator) GenerateManifest(params serviceadapter.GenerateManifestParams) (serviceadapter.GenerateManifestOutput, error) {
 
-	if previousPlan != nil {
-		prev := instanceCounts(*previousPlan)
-		current := instanceCounts(servicePlan)
+	if params.PreviousPlan != nil {
+		prev := instanceCounts(*params.PreviousPlan)
+		current := instanceCounts(params.Plan)
 		if (prev["kafka_server"] > current["kafka_server"]) || (prev["zookeeper_server"] > current["zookeeper_server"]) {
 			a.StderrLogger.Println("cannot migrate to a smaller plan")
 			return serviceadapter.GenerateManifestOutput{}, errors.New("")
@@ -41,13 +33,13 @@ func (a *ManifestGenerator) GenerateManifest(
 
 	var releases []bosh.Release
 
-	loggingRaw, ok := servicePlan.Properties["logging"]
+	loggingRaw, ok := params.Plan.Properties["logging"]
 	includeMetron := false
 	if ok {
 		includeMetron = true
 	}
 
-	for _, serviceRelease := range serviceDeployment.Releases {
+	for _, serviceRelease := range params.ServiceDeployment.Releases {
 		releases = append(releases, bosh.Release{
 			Name:    serviceRelease.Name,
 			Version: serviceRelease.Version,
@@ -61,19 +53,19 @@ func (a *ManifestGenerator) GenerateManifest(
 		}
 	}
 
-	err := checkInstanceGroupsPresent([]string{"kafka_server", "zookeeper_server"}, servicePlan.InstanceGroups)
+	err := checkInstanceGroupsPresent([]string{"kafka_server", "zookeeper_server"}, params.Plan.InstanceGroups)
 	if err != nil {
 		a.StderrLogger.Println(err.Error())
 		return serviceadapter.GenerateManifestOutput{}, errors.New("Contact your operator, service configuration issue occurred")
 	}
 
-	instanceGroups, err := InstanceGroupMapper(servicePlan.InstanceGroups, serviceDeployment.Releases, OnlyStemcellAlias, deploymentInstanceGroupsToJobs)
+	instanceGroups, err := InstanceGroupMapper(params.Plan.InstanceGroups, params.ServiceDeployment.Releases, OnlyStemcellAlias, deploymentInstanceGroupsToJobs)
 	if err != nil {
 		a.StderrLogger.Println(err.Error())
 		return serviceadapter.GenerateManifestOutput{}, errors.New("")
 	}
 
-	kafkaServerRelease, err := serviceadapter.FindReleaseForJob("kafka_server", serviceDeployment.Releases)
+	kafkaServerRelease, err := serviceadapter.FindReleaseForJob("kafka_server", params.ServiceDeployment.Releases)
 
 	if err != nil {
 		a.StderrLogger.Println("Cannot determine kafka_server release", err.Error())
@@ -100,25 +92,25 @@ func (a *ManifestGenerator) GenerateManifest(
 	}
 
 	autoCreateTopics := true
-	arbitraryParameters := requestParams.ArbitraryParams()
+	arbitraryParameters := params.RequestParams.ArbitraryParams()
 
 	if arbitraryVal, ok := arbitraryParameters["auto_create_topics"]; ok {
 		autoCreateTopics = arbitraryVal.(bool)
-	} else if previousVal, previousOk := getPreviousManifestProperty("auto_create_topics", previousManifest); previousOk {
+	} else if previousVal, previousOk := getPreviousManifestProperty("auto_create_topics", params.PreviousManifest); previousOk {
 		autoCreateTopics = previousVal.(bool)
-	} else if planVal, ok := servicePlan.Properties["auto_create_topics"]; ok {
+	} else if planVal, ok := params.Plan.Properties["auto_create_topics"]; ok {
 		autoCreateTopics = planVal.(bool)
 	}
 
 	defaultReplicationFactor := 3
 	if arbitraryVal, ok := arbitraryParameters["default_replication_factor"]; ok {
 		defaultReplicationFactor = int(arbitraryVal.(float64))
-	} else if val, ok := servicePlan.Properties["default_replication_factor"]; ok {
+	} else if val, ok := params.Plan.Properties["default_replication_factor"]; ok {
 		defaultReplicationFactor = int(val.(float64))
 	}
 
 	serviceAdapterFails := false
-	if val, ok := servicePlan.Properties["service_adapter_fails"]; ok {
+	if val, ok := params.Plan.Properties["service_adapter_fails"]; ok {
 		serviceAdapterFails = val.(bool)
 	}
 	if kafkaBrokerJob, ok := getJobFromInstanceGroup("kafka_server", kafkaBrokerInstanceGroup); ok {
@@ -140,7 +132,7 @@ func (a *ManifestGenerator) GenerateManifest(
 		}
 		manifestProperties["metron_agent"] = map[interface{}]interface{}{
 			"zone":       "",
-			"deployment": serviceDeployment.DeploymentName,
+			"deployment": params.ServiceDeployment.DeploymentName,
 		}
 		manifestProperties["loggregator"] = map[interface{}]interface{}{
 			"tls": map[interface{}]interface{}{
@@ -171,23 +163,23 @@ func (a *ManifestGenerator) GenerateManifest(
 		Serial:          boolPointer(false),
 	}
 
-	if servicePlan.Update != nil {
+	if params.Plan.Update != nil {
 		updateBlock = &bosh.Update{
-			Canaries:        servicePlan.Update.Canaries,
-			MaxInFlight:     servicePlan.Update.MaxInFlight,
-			CanaryWatchTime: servicePlan.Update.CanaryWatchTime,
-			UpdateWatchTime: servicePlan.Update.UpdateWatchTime,
-			Serial:          servicePlan.Update.Serial,
+			Canaries:        params.Plan.Update.Canaries,
+			MaxInFlight:     params.Plan.Update.MaxInFlight,
+			CanaryWatchTime: params.Plan.Update.CanaryWatchTime,
+			UpdateWatchTime: params.Plan.Update.UpdateWatchTime,
+			Serial:          params.Plan.Update.Serial,
 		}
 	}
 
 	manifest := bosh.BoshManifest{
-		Name:     serviceDeployment.DeploymentName,
+		Name:     params.ServiceDeployment.DeploymentName,
 		Releases: releases,
 		Stemcells: []bosh.Stemcell{{
 			Alias:   OnlyStemcellAlias,
-			OS:      serviceDeployment.Stemcell.OS,
-			Version: serviceDeployment.Stemcell.Version,
+			OS:      params.ServiceDeployment.Stemcell.OS,
+			Version: params.ServiceDeployment.Stemcell.Version,
 		}},
 		InstanceGroups: instanceGroups,
 		Properties:     manifestProperties,
