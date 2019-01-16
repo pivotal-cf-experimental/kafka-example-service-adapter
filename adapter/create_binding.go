@@ -8,20 +8,18 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/pivotal-cf/on-demand-services-sdk/bosh"
 	"github.com/pivotal-cf/on-demand-services-sdk/serviceadapter"
 )
 
-func (b *Binder) CreateBinding(bindingId string, boshVMs bosh.BoshVMs, manifest bosh.BoshManifest, requestParams serviceadapter.RequestParameters,
-	secrets serviceadapter.ManifestSecrets, dnsInfo serviceadapter.DNSAddresses) (serviceadapter.Binding, error) {
+func (b *Binder) CreateBinding(params serviceadapter.CreateBindingParams) (serviceadapter.Binding, error) {
 
-	params := requestParams.ArbitraryParams()
+	arbitraryParams := params.RequestParams.ArbitraryParams()
 
-	bindResource := requestParams.BindResource()
+	bindResource := params.RequestParams.BindResource()
 	b.StderrLogger.Printf("Bind Resource with app GUID: %s, credential client ID: %s, route: %s\n", bindResource.AppGuid, bindResource.CredentialClientID, bindResource.Route)
 
 	var invalidParams []string
-	for paramKey, _ := range params {
+	for paramKey, _ := range arbitraryParams {
 		if paramKey != "topic" {
 			invalidParams = append(invalidParams, paramKey)
 		}
@@ -34,7 +32,7 @@ func (b *Binder) CreateBinding(bindingId string, boshVMs bosh.BoshVMs, manifest 
 		return serviceadapter.Binding{}, errors.New(errorMessage)
 	}
 
-	kafkaHosts := boshVMs["kafka_server"]
+	kafkaHosts := params.DeploymentTopology["kafka_server"]
 	if len(kafkaHosts) == 0 {
 		b.StderrLogger.Println("no VMs for instance group kafka_server")
 		return serviceadapter.Binding{}, errors.New("")
@@ -45,23 +43,23 @@ func (b *Binder) CreateBinding(bindingId string, boshVMs bosh.BoshVMs, manifest 
 		kafkaAddresses = append(kafkaAddresses, fmt.Sprintf("%s:9092", kafkaHost))
 	}
 
-	zookeeperServers := boshVMs["zookeeper_server"]
+	zookeeperServers := params.DeploymentTopology["zookeeper_server"]
 	if len(zookeeperServers) == 0 {
 		b.StderrLogger.Println("no VMs for job zookeeper_server")
 		return serviceadapter.Binding{}, errors.New("")
 	}
 
-	if _, errorStream, err := b.Run(b.TopicCreatorCommand, strings.Join(zookeeperServers, ","), bindingId); err != nil {
+	if _, errorStream, err := b.Run(b.TopicCreatorCommand, strings.Join(zookeeperServers, ","), params.BindingID); err != nil {
 		if strings.Contains(string(errorStream), "kafka.common.TopicExistsException") {
-			b.StderrLogger.Println(fmt.Sprintf("topic '%s' already exists", bindingId))
+			b.StderrLogger.Println(fmt.Sprintf("topic '%s' already exists", params.BindingID))
 			return serviceadapter.Binding{}, serviceadapter.NewBindingAlreadyExistsError(nil)
 		}
 		b.StderrLogger.Println("Error creating topic: " + err.Error())
 		return serviceadapter.Binding{}, errors.New("")
 	}
 
-	if params["topic"] != nil {
-		if _, _, err := b.Run(b.TopicCreatorCommand, strings.Join(zookeeperServers, ","), params["topic"].(string)); err != nil {
+	if arbitraryParams["topic"] != nil {
+		if _, _, err := b.Run(b.TopicCreatorCommand, strings.Join(zookeeperServers, ","), arbitraryParams["topic"].(string)); err != nil {
 			b.StderrLogger.Println("Error creating topic: " + err.Error())
 			return serviceadapter.Binding{}, errors.New("")
 		}
