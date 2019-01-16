@@ -10,11 +10,14 @@ import (
 
 var _ = Describe("Adapter/GeneratePlanSchemas", func() {
 	It("generates schemas", func() {
-		plan := serviceadapter.Plan{
-			Properties: serviceadapter.Properties{
-				"name": "plan-with-schema",
+		param := serviceadapter.GeneratePlanSchemaParams{
+			Plan: serviceadapter.Plan{
+				Properties: serviceadapter.Properties{
+					"name": "plan-with-schema",
+				},
 			},
 		}
+
 		schemas := serviceadapter.JSONSchemas{
 			Parameters: map[string]interface{}{
 				"$schema":              "http://json-schema.org/draft-04/schema#",
@@ -56,29 +59,34 @@ var _ = Describe("Adapter/GeneratePlanSchemas", func() {
 		}
 
 		generator := &adapter.SchemaGenerator{}
-		Expect(generator.GeneratePlanSchema(plan)).To(Equal(expectedSchema))
+		Expect(generator.GeneratePlanSchema(param)).To(Equal(expectedSchema))
 	})
 
 	It("fails with an error if the plan is unknown", func() {
-		plan := serviceadapter.Plan{
-			Properties: serviceadapter.Properties{
-				"service_adapter_fails": true,
+		param := serviceadapter.GeneratePlanSchemaParams{
+			Plan: serviceadapter.Plan{
+				Properties: serviceadapter.Properties{
+					"service_adapter_fails": true,
+				},
 			},
 		}
+
 		generator := &adapter.SchemaGenerator{}
-		_, err := generator.GeneratePlanSchema(plan)
+		_, err := generator.GeneratePlanSchema(param)
 		Expect(err).To(HaveOccurred())
 	})
 
 	Describe("when schema_to_return is set", func() {
 		It("returns the supplied schema", func() {
-			plan := serviceadapter.Plan{
-				Properties: serviceadapter.Properties{
-					"schema_to_return": `{"foo": "bar"}`,
+			param := serviceadapter.GeneratePlanSchemaParams{
+				Plan: serviceadapter.Plan{
+					Properties: serviceadapter.Properties{
+						"schema_to_return": `{"foo": "bar"}`,
+					},
 				},
 			}
 			generator := &adapter.SchemaGenerator{}
-			schemas, err := generator.GeneratePlanSchema(plan)
+			schemas, err := generator.GeneratePlanSchema(param)
 			Expect(err).NotTo(HaveOccurred())
 			expectedSchema := map[string]interface{}{
 				"foo": "bar",
@@ -89,24 +97,28 @@ var _ = Describe("Adapter/GeneratePlanSchemas", func() {
 		})
 
 		It("fails if it's not a valid json", func() {
-			plan := serviceadapter.Plan{
-				Properties: serviceadapter.Properties{
-					"schema_to_return": `nop`,
+			param := serviceadapter.GeneratePlanSchemaParams{
+				Plan: serviceadapter.Plan{
+					Properties: serviceadapter.Properties{
+						"schema_to_return": `nop`,
+					},
 				},
 			}
 			generator := &adapter.SchemaGenerator{}
-			_, err := generator.GeneratePlanSchema(plan)
+			_, err := generator.GeneratePlanSchema(param)
 			Expect(err).To(MatchError("Invalid 'schema_to_return' JSON"))
 		})
 
 		It("fails if it's not a string", func() {
-			plan := serviceadapter.Plan{
-				Properties: serviceadapter.Properties{
-					"schema_to_return": false,
+			param := serviceadapter.GeneratePlanSchemaParams{
+				Plan: serviceadapter.Plan{
+					Properties: serviceadapter.Properties{
+						"schema_to_return": false,
+					},
 				},
 			}
 			generator := &adapter.SchemaGenerator{}
-			_, err := generator.GeneratePlanSchema(plan)
+			_, err := generator.GeneratePlanSchema(param)
 			Expect(err).To(MatchError("'schema_to_return' must be a JSON string"))
 		})
 	})

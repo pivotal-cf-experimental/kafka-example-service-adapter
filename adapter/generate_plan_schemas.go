@@ -9,13 +9,13 @@ import (
 
 type SchemaGenerator struct{}
 
-func (s SchemaGenerator) GeneratePlanSchema(plan serviceadapter.Plan) (serviceadapter.PlanSchema, error) {
+func (s SchemaGenerator) GeneratePlanSchema(params serviceadapter.GeneratePlanSchemaParams) (serviceadapter.PlanSchema, error) {
 
 	// For system testing only...
-	if plan.Properties["service_adapter_fails"] == true {
+	if params.Plan.Properties["service_adapter_fails"] == true {
 		return serviceadapter.PlanSchema{}, errors.New("Cannot generate the schema")
 	}
-	if theSchema, ok := plan.Properties["schema_to_return"]; ok {
+	if theSchema, ok := params.Plan.Properties["schema_to_return"]; ok {
 		var planSchema serviceadapter.PlanSchema
 		var schema map[string]interface{}
 		schemaStr, ok := theSchema.(string)

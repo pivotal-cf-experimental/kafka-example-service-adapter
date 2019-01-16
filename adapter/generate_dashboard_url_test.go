@@ -12,6 +12,12 @@ import (
 var _ = Describe("Adapter/GenerateDashboardUrl", func() {
 	It("generates a arbitrary dashboard url", func() {
 		generator := &adapter.DashboardUrlGenerator{}
-		Expect(generator.DashboardUrl("instanceID", serviceadapter.Plan{}, bosh.BoshManifest{})).To(Equal(serviceadapter.DashboardUrl{DashboardUrl: "http://example_dashboard.com/instanceID"}))
+		params := serviceadapter.DashboardUrlParams{
+			InstanceID: "instanceID",
+			Plan:       serviceadapter.Plan{},
+			Manifest:   bosh.BoshManifest{},
+		}
+
+		Expect(generator.DashboardUrl(params)).To(Equal(serviceadapter.DashboardUrl{DashboardUrl: "http://example_dashboard.com/instanceID"}))
 	})
 })
