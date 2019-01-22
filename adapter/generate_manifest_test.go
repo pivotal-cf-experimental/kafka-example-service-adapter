@@ -179,10 +179,6 @@ var _ = Describe("generating manifests", func() {
 				ServiceDeployment: serviceDeployment,
 				Plan:              plan,
 				RequestParams:     map[string]interface{}{},
-				PreviousPlan:      nil,
-				PreviousManifest:  nil,
-				PreviousSecrets:   nil,
-				PreviousConfigs:   nil,
 			})
 			Expect(generateErr).To(HaveOccurred())
 		})
@@ -194,10 +190,6 @@ var _ = Describe("generating manifests", func() {
 				ServiceDeployment: serviceDeployment,
 				Plan:              plan,
 				RequestParams:     map[string]interface{}{},
-				PreviousPlan:      nil,
-				PreviousManifest:  nil,
-				PreviousSecrets:   nil,
-				PreviousConfigs:   nil,
 			})
 			Expect(generateErr).ToNot(HaveOccurred())
 		})
@@ -209,10 +201,6 @@ var _ = Describe("generating manifests", func() {
 				ServiceDeployment: serviceDeployment,
 				Plan:              plan,
 				RequestParams:     map[string]interface{}{},
-				PreviousPlan:      nil,
-				PreviousManifest:  nil,
-				PreviousSecrets:   nil,
-				PreviousConfigs:   nil,
 			})
 			Expect(generateErr).ToNot(HaveOccurred())
 		})
@@ -225,10 +213,6 @@ var _ = Describe("generating manifests", func() {
 				ServiceDeployment: serviceDeployment,
 				Plan:              plan,
 				RequestParams:     map[string]interface{}{},
-				PreviousPlan:      nil,
-				PreviousManifest:  nil,
-				PreviousSecrets:   nil,
-				PreviousConfigs:   nil,
 			})
 			Expect(generateErr).ToNot(HaveOccurred())
 			Expect(stderr.String()).To(ContainSubstring("Skipping min service release version check"))
@@ -242,10 +226,6 @@ var _ = Describe("generating manifests", func() {
 					ServiceDeployment: serviceDeployment,
 					Plan:              plan,
 					RequestParams:     map[string]interface{}{},
-					PreviousPlan:      nil,
-					PreviousManifest:  nil,
-					PreviousSecrets:   nil,
-					PreviousConfigs:   nil,
 				})
 			}
 			Expect(genMani).To(Panic())
