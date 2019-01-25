@@ -20,15 +20,15 @@ var _ = Describe("Create", func() {
 
 	JustBeforeEach(func() {
 		params := serviceadapter.CreateBindingParams{
-			BindingID:"binding-id",
-			DeploymentTopology:boshVMs,
-			Manifest:bosh.BoshManifest{},
-			RequestParams: requestParameters,
-			Secrets: nil,
-			DnsAddresses: nil,
+			BindingID:          "binding-id",
+			DeploymentTopology: boshVMs,
+			Manifest:           bosh.BoshManifest{},
+			RequestParams:      requestParameters,
+			Secrets:            nil,
+			DNSAddresses:       nil,
 		}
 		binding, bindErr = binder.CreateBinding(params)
-})
+	})
 
 	Context("when there are vms", func() {
 		BeforeEach(func() {
