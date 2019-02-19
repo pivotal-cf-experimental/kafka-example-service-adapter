@@ -33,24 +33,11 @@ func (a *ManifestGenerator) GenerateManifest(params serviceadapter.GenerateManif
 
 	var releases []bosh.Release
 
-	loggingRaw, ok := params.Plan.Properties["logging"]
-	includeMetron := false
-	if ok {
-		includeMetron = true
-	}
-
 	for _, serviceRelease := range params.ServiceDeployment.Releases {
 		releases = append(releases, bosh.Release{
 			Name:    serviceRelease.Name,
 			Version: serviceRelease.Version,
 		})
-	}
-
-	deploymentInstanceGroupsToJobs := defaultDeploymentInstanceGroupsToJobs()
-	if includeMetron {
-		for instanceGroup, jobs := range deploymentInstanceGroupsToJobs {
-			deploymentInstanceGroupsToJobs[instanceGroup] = append(jobs, "metron_agent")
-		}
 	}
 
 	err := checkInstanceGroupsPresent([]string{"kafka_server", "zookeeper_server"}, params.Plan.InstanceGroups)
@@ -59,6 +46,7 @@ func (a *ManifestGenerator) GenerateManifest(params serviceadapter.GenerateManif
 		return serviceadapter.GenerateManifestOutput{}, errors.New("Contact your operator, service configuration issue occurred")
 	}
 
+	deploymentInstanceGroupsToJobs := defaultDeploymentInstanceGroupsToJobs()
 	instanceGroups, err := InstanceGroupMapper(params.Plan.InstanceGroups, params.ServiceDeployment.Releases, OnlyStemcellAlias, deploymentInstanceGroupsToJobs)
 	if err != nil {
 		a.StderrLogger.Println(err.Error())
@@ -124,37 +112,6 @@ func (a *ManifestGenerator) GenerateManifest(params serviceadapter.GenerateManif
 
 	manifestProperties := map[string]interface{}{}
 
-	if includeMetron {
-		logging := loggingRaw.(map[string]interface{})
-		manifestProperties["syslog_daemon_config"] = map[interface{}]interface{}{
-			"address": logging["syslog_address"],
-			"port":    logging["syslog_port"],
-		}
-		manifestProperties["metron_agent"] = map[interface{}]interface{}{
-			"zone":       "",
-			"deployment": params.ServiceDeployment.DeploymentName,
-		}
-		manifestProperties["loggregator"] = map[interface{}]interface{}{
-			"tls": map[interface{}]interface{}{
-				"metron": map[interface{}]interface{}{
-					"cert": logging["loggregator_tls_metron_cert"],
-					"key":  logging["loggregator_tls_metron_key"],
-				},
-				"ca_cert": logging["loggregator_tls_ca_cert"],
-			},
-			"loggregator_endpoint": map[interface{}]interface{}{
-				"shared_secret": logging["loggregator_shared_secret"],
-			},
-			"etcd": map[interface{}]interface{}{
-				"ca_cert":  logging["loggregator_etcd_ca_cert"],
-				"machines": logging["loggregator_etcd_addresses"].([]interface{}),
-			},
-		}
-		manifestProperties["metron_endpoint"] = map[interface{}]interface{}{
-			"shared_secret": logging["loggregator_shared_secret"],
-		}
-	}
-
 	updateBlock := &bosh.Update{
 		Canaries:        1,
 		MaxInFlight:     10,
@@ -190,15 +147,6 @@ func (a *ManifestGenerator) GenerateManifest(params serviceadapter.GenerateManif
 		Manifest:          manifest,
 		ODBManagedSecrets: serviceadapter.ODBManagedSecrets{},
 	}, nil
-}
-
-func contains(s []string, e string) bool {
-	for _, a := range s {
-		if a == e {
-			return true
-		}
-	}
-	return false
 }
 
 func getPreviousManifestProperty(name string, manifest *bosh.BoshManifest) (interface{}, bool) {
