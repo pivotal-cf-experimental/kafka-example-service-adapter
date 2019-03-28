@@ -48,10 +48,10 @@ var _ = Describe("generate-manifest subcommand", func() {
 				"version": "9.2.1",
 				"jobs": ["kafka_server", "zookeeper_server", "smoke_tests"]
 			}],
-			"stemcell": {
+			"stemcells": [{
 				"stemcell_os": "Windows",
 				"stemcell_version": "3.1"
-			}
+			}]
 		}`, deploymentName)
 		plan = `{
 		  "instance_groups": [
@@ -687,10 +687,10 @@ properties:
 								"version": "0.16.0",
 								"jobs": ["kafka_server", "zookeeper_server", "smoke_tests"]
 							}],
-							"stemcell": {
+							"stemcells": [{
 								"stemcell_os": "Windows",
 								"stemcell_version": "3.1"
-							}
+							}]
 						}`, deploymentName)
 					})
 
@@ -711,10 +711,10 @@ properties:
 								"version": "0.15.0",
 								"jobs": ["kafka_server", "zookeeper_server", "smoke_tests"]
 							}],
-							"stemcell": {
+							"stemcells": [{
 								"stemcell_os": "Windows",
 								"stemcell_version": "3.1"
-							}
+							}]
 						}`, deploymentName)
 					})
 
@@ -734,10 +734,10 @@ properties:
 								"version": "0.15.0",
 								"jobs": ["zookeeper_server", "smoke_tests"]
 							}],
-							"stemcell": {
+							"stemcells": [{
 								"stemcell_os": "Windows",
 								"stemcell_version": "3.1"
-							}
+							}]
 						}`, deploymentName)
 					})
 
@@ -829,10 +829,10 @@ properties:
 			serviceDeployment = fmt.Sprintf(`{
 				"deployment_name": "%s",
 				"releases": [],
-				"stemcell": {
+				"stemcells": [{
 					"stemcell_os": "Windows",
 					"stemcell_version": "3.1"
-				}
+				}]
 			}`, deploymentName)
 		})
 
@@ -951,10 +951,10 @@ properties:
 							"version": "9.2.1",
 							"jobs": ["agshdj"]
 						}],
-						"stemcell": {
+						"stemcells": [{
 							"stemcell_os": "Windows",
 							"stemcell_version": "3.1"
-						}
+						}]
 					}`, deploymentName)
 		})
 

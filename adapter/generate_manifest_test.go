@@ -37,7 +37,7 @@ var _ = Describe("generating manifests", func() {
 		serviceDeployment = serviceadapter.ServiceDeployment{
 			DeploymentName: "a-great-deployment",
 			Releases:       serviceadapter.ServiceReleases{serviceRelease},
-			Stemcell:       serviceadapter.Stemcell{OS: "TempleOS", Version: "4.05"},
+			Stemcells:       []serviceadapter.Stemcell{{OS: "TempleOS", Version: "4.05"}},
 		}
 		generatedInstanceGroups = []bosh.InstanceGroup{{
 			Name:     "kafka_server",
@@ -98,7 +98,7 @@ var _ = Describe("generating manifests", func() {
 			Expect(manifest.Name).To(Equal(serviceDeployment.DeploymentName))
 			Expect(manifest.Releases).To(ConsistOf(bosh.Release{Name: serviceRelease.Name, Version: serviceRelease.Version}))
 			stemcellAlias := manifest.Stemcells[0].Alias
-			Expect(manifest.Stemcells).To(ConsistOf(bosh.Stemcell{Alias: stemcellAlias, OS: serviceDeployment.Stemcell.OS, Version: serviceDeployment.Stemcell.Version}))
+			Expect(manifest.Stemcells).To(ConsistOf(bosh.Stemcell{Alias: stemcellAlias, OS: serviceDeployment.Stemcells[0].OS, Version: serviceDeployment.Stemcells[0].Version}))
 		})
 
 		It("returns the instance groups produced by the mapper", func() {

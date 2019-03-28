@@ -135,8 +135,8 @@ func (a *ManifestGenerator) GenerateManifest(params serviceadapter.GenerateManif
 		Releases: releases,
 		Stemcells: []bosh.Stemcell{{
 			Alias:   OnlyStemcellAlias,
-			OS:      params.ServiceDeployment.Stemcell.OS,
-			Version: params.ServiceDeployment.Stemcell.Version,
+			OS:      params.ServiceDeployment.Stemcells[0].OS,
+			Version: params.ServiceDeployment.Stemcells[0].Version,
 		}},
 		InstanceGroups: instanceGroups,
 		Properties:     manifestProperties,
