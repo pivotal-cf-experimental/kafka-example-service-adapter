@@ -25,7 +25,7 @@
 
 [[constraint]]
   name = "github.com/coreos/go-semver"
-  version = "0.2.0"
+  version = "0.3.0"
 
 [[constraint]]
   name = "github.com/pivotal-cf/on-demand-services-sdk"
