@@ -17,13 +17,13 @@ instance_groups:
     properties:
       default_replication_factor: 3
       auto_create_topics: true
-      network: *network
+      network: &network example-network
       service_adapter_fails: false
   vm_type: small
   persistent_disk_type: ten
   stemcell: *stemcell
   networks:
-  - name: &network example-network
+  - name: *network
   azs: [example-az]
 - name: zookeeper_server
   instances: 1

@@ -66,6 +66,14 @@
   revision = "553a641470496b2327abcac10b36396bd98e45c9"
 
 [[projects]]
+  digest = "1:582b704bebaa06b48c29b0cec224a6058a09c86883aaddabde889cd1a5f73e1b"
+  name = "github.com/google/uuid"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "0cd6bf5da1e1c83f8b45653022c74f71af0538a4"
+  version = "v1.1.1"
+
+[[projects]]
   digest = "1:160eabf7a69910fd74f29c692718bc2437c1c1c7d4c9dea9712357752a70e5df"
   name = "github.com/gorilla/context"
   packages = ["."]
@@ -151,6 +159,14 @@
   version = "v1.3.0"
 
 [[projects]]
+  digest = "1:e5d0bd87abc2781d14e274807a470acd180f0499f8bf5bb18606e9ec22ad9de9"
+  name = "github.com/pborman/uuid"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "adf5a7427709b9deb95d29d3fa8a2bf9cfd388f1"
+  version = "v1.2"
+
+[[projects]]
   digest = "1:34833843589f17bb48234a8cdd36b1038aed85a09d60e30fc73891b7d89b6c1d"
   name = "github.com/pierrec/lz4"
   packages = ["."]
@@ -167,7 +183,7 @@
   version = "v0.1.1"
 
 [[projects]]
-  digest = "1:25aff8281c1fd6ce66d192e61a8aa50ba29968fe4f6b27325b957475ba43c9e8"
+  digest = "1:b427122515f552d3512842501f49e1688ad988c0ffe1a00ac83cbcb07841c499"
   name = "github.com/pivotal-cf/brokerapi"
   packages = [
     ".",
@@ -179,8 +195,8 @@
     "utils",
   ]
   pruneopts = "UT"
-  revision = "68c365cab8d04af688c8fc12aea42d6d4017e8f0"
-  version = "v6.0.0"
+  revision = "dcf20a4a7117e2f9f167d4f7c06d68e1263cbf52"
+  version = "v6.4.2"
 
 [[projects]]
   branch = "master"
@@ -191,7 +207,7 @@
     "serviceadapter",
   ]
   pruneopts = "UT"
-  revision = "9526a50d1b885ddf020e6a6966af9333da6d8f36"
+  revision = "716dcd80d4c78b971ba4c20cea5494399836c53e"
 
 [[projects]]
   digest = "1:40e195917a951a8bf867cd05de2a46aaf1806c50cf92eebf4c16f78cd196f747"
@@ -350,12 +366,12 @@
   version = "v1.1.0"
 
 [[projects]]
-  branch = "v2"
-  digest = "1:73e6fda93622790d2371344759df06ff5ff2fac64a6b6e8832b792e7402956e7"
+  digest = "1:59f10c1537d2199d9115d946927fe31165959a95190849c82ff11e05803528b0"
   name = "gopkg.in/yaml.v2"
   packages = ["."]
   pruneopts = "UT"
-  revision = "d670f9405373e636a5a2765eea47fac0c9bc91a4"
+  revision = "f221b8435cfb71e54062f6c6e99e9ade30b124d5"
+  version = "v2.2.4"
 
 [solve-meta]
   analyzer-name = "dep"
