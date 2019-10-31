@@ -1,30 +1,41 @@
 # code.cloudfoundry.org/lager v1.1.1-0.20191008172124-a9afc05ee5be
 code.cloudfoundry.org/lager
 code.cloudfoundry.org/lager/internal/truncate
-# github.com/DataDog/zstd v1.4.1
-github.com/DataDog/zstd
+# github.com/Shopify/sarama v1.24.1
+github.com/Shopify/sarama
 # github.com/coreos/go-semver v0.3.0
 github.com/coreos/go-semver/semver
-# github.com/davecgh/go-spew v1.1.0
+# github.com/davecgh/go-spew v1.1.1
 github.com/davecgh/go-spew/spew
-# github.com/eapache/go-resiliency v1.0.0
+# github.com/eapache/go-resiliency v1.1.0
 github.com/eapache/go-resiliency/breaker
-# github.com/eapache/go-xerial-snappy v0.0.0-20160609142408-bb955e01b934
+# github.com/eapache/go-xerial-snappy v0.0.0-20180814174437-776d5712da21
 github.com/eapache/go-xerial-snappy
 # github.com/eapache/queue v1.1.0
 github.com/eapache/queue
-# github.com/golang/snappy v0.0.0-20170215233205-553a64147049
+# github.com/golang/snappy v0.0.1
 github.com/golang/snappy
 # github.com/google/uuid v1.1.1
 github.com/google/uuid
 # github.com/gorilla/mux v1.7.3
 github.com/gorilla/mux
+# github.com/hashicorp/go-uuid v1.0.1
+github.com/hashicorp/go-uuid
 # github.com/hpcloud/tail v1.0.0
 github.com/hpcloud/tail
 github.com/hpcloud/tail/ratelimiter
 github.com/hpcloud/tail/util
 github.com/hpcloud/tail/watch
 github.com/hpcloud/tail/winfile
+# github.com/jcmturner/gofork v0.0.0-20190328161633-dc7c13fece03
+github.com/jcmturner/gofork/encoding/asn1
+github.com/jcmturner/gofork/x/crypto/pbkdf2
+# github.com/klauspost/compress v1.8.2
+github.com/klauspost/compress/fse
+github.com/klauspost/compress/huff0
+github.com/klauspost/compress/snappy
+github.com/klauspost/compress/zstd
+github.com/klauspost/compress/zstd/internal/xxhash
 # github.com/maxbrunsfeld/counterfeiter/v6 v6.2.2
 github.com/maxbrunsfeld/counterfeiter/v6
 github.com/maxbrunsfeld/counterfeiter/v6/arguments
@@ -73,10 +84,9 @@ github.com/onsi/gomega/matchers/support/goraph/util
 github.com/onsi/gomega/types
 # github.com/pborman/uuid v0.0.0-20180906182336-adf5a7427709
 github.com/pborman/uuid
-# github.com/pierrec/lz4 v1.0.2-0.20171218195038-2fcda4cb7018
+# github.com/pierrec/lz4 v2.2.6+incompatible
 github.com/pierrec/lz4
-# github.com/pierrec/xxHash v0.1.1
-github.com/pierrec/xxHash/xxHash32
+github.com/pierrec/lz4/internal/xxh32
 # github.com/pivotal-cf/brokerapi/v7 v7.0.0
 github.com/pivotal-cf/brokerapi/v7
 github.com/pivotal-cf/brokerapi/v7/auth
@@ -90,12 +100,17 @@ github.com/pivotal-cf/on-demand-services-sdk/bosh
 github.com/pivotal-cf/on-demand-services-sdk/serviceadapter
 # github.com/pkg/errors v0.8.1
 github.com/pkg/errors
-# github.com/rcrowley/go-metrics v0.0.0-20171128170426-e181e095bae9
+# github.com/rcrowley/go-metrics v0.0.0-20181016184325-3113b8401b8a
 github.com/rcrowley/go-metrics
+# golang.org/x/crypto v0.0.0-20190404164418-38d8ce5564a5
+golang.org/x/crypto/md4
+golang.org/x/crypto/pbkdf2
 # golang.org/x/net v0.0.0-20190827160401-ba9fcec4b297
 golang.org/x/net/html
 golang.org/x/net/html/atom
 golang.org/x/net/html/charset
+golang.org/x/net/internal/socks
+golang.org/x/net/proxy
 # golang.org/x/sys v0.0.0-20190826190057-c7b8b68b1456
 golang.org/x/sys/unix
 # golang.org/x/text v0.3.2
@@ -129,12 +144,48 @@ golang.org/x/tools/internal/gopathwalk
 golang.org/x/tools/internal/imports
 golang.org/x/tools/internal/module
 golang.org/x/tools/internal/semver
-# gopkg.in/Shopify/sarama.v1 v1.20.1
-gopkg.in/Shopify/sarama.v1
 # gopkg.in/fsnotify.v1 v1.4.7
 gopkg.in/fsnotify.v1
 # gopkg.in/go-playground/validator.v8 v8.18.2
 gopkg.in/go-playground/validator.v8
+# gopkg.in/jcmturner/aescts.v1 v1.0.1
+gopkg.in/jcmturner/aescts.v1
+# gopkg.in/jcmturner/dnsutils.v1 v1.0.1
+gopkg.in/jcmturner/dnsutils.v1
+# gopkg.in/jcmturner/gokrb5.v7 v7.2.3
+gopkg.in/jcmturner/gokrb5.v7/asn1tools
+gopkg.in/jcmturner/gokrb5.v7/client
+gopkg.in/jcmturner/gokrb5.v7/config
+gopkg.in/jcmturner/gokrb5.v7/credentials
+gopkg.in/jcmturner/gokrb5.v7/crypto
+gopkg.in/jcmturner/gokrb5.v7/crypto/common
+gopkg.in/jcmturner/gokrb5.v7/crypto/etype
+gopkg.in/jcmturner/gokrb5.v7/crypto/rfc3961
+gopkg.in/jcmturner/gokrb5.v7/crypto/rfc3962
+gopkg.in/jcmturner/gokrb5.v7/crypto/rfc4757
+gopkg.in/jcmturner/gokrb5.v7/crypto/rfc8009
+gopkg.in/jcmturner/gokrb5.v7/gssapi
+gopkg.in/jcmturner/gokrb5.v7/iana
+gopkg.in/jcmturner/gokrb5.v7/iana/addrtype
+gopkg.in/jcmturner/gokrb5.v7/iana/adtype
+gopkg.in/jcmturner/gokrb5.v7/iana/asnAppTag
+gopkg.in/jcmturner/gokrb5.v7/iana/chksumtype
+gopkg.in/jcmturner/gokrb5.v7/iana/errorcode
+gopkg.in/jcmturner/gokrb5.v7/iana/etypeID
+gopkg.in/jcmturner/gokrb5.v7/iana/flags
+gopkg.in/jcmturner/gokrb5.v7/iana/keyusage
+gopkg.in/jcmturner/gokrb5.v7/iana/msgtype
+gopkg.in/jcmturner/gokrb5.v7/iana/nametype
+gopkg.in/jcmturner/gokrb5.v7/iana/patype
+gopkg.in/jcmturner/gokrb5.v7/kadmin
+gopkg.in/jcmturner/gokrb5.v7/keytab
+gopkg.in/jcmturner/gokrb5.v7/krberror
+gopkg.in/jcmturner/gokrb5.v7/messages
+gopkg.in/jcmturner/gokrb5.v7/pac
+gopkg.in/jcmturner/gokrb5.v7/types
+# gopkg.in/jcmturner/rpc.v1 v1.1.0
+gopkg.in/jcmturner/rpc.v1/mstypes
+gopkg.in/jcmturner/rpc.v1/ndr
 # gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7
 gopkg.in/tomb.v1
 # gopkg.in/yaml.v2 v2.2.4
