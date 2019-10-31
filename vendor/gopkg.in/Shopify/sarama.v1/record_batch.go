@@ -36,7 +36,6 @@ type RecordBatch struct {
 	Codec                 CompressionCodec
 	CompressionLevel      int
 	Control               bool
-	LogAppendTime         bool
 	LastOffsetDelta       int32
 	FirstTimestamp        time.Time
 	MaxTimestamp          time.Time
@@ -45,14 +44,9 @@ type RecordBatch struct {
 	FirstSequence         int32
 	Records               []*Record
 	PartialTrailingRecord bool
-	IsTransactional       bool
 
 	compressedRecords []byte
 	recordsLen        int // uncompressed records size
-}
-
-func (b *RecordBatch) LastOffset() int64 {
-	return b.FirstOffset + int64(b.LastOffsetDelta)
 }
 
 func (b *RecordBatch) encode(pe packetEncoder) error {
@@ -116,10 +110,7 @@ func (b *RecordBatch) decode(pd packetDecoder) (err error) {
 		return err
 	}
 
-	crc32Decoder := acquireCrc32Field(crcCastagnoli)
-	defer releaseCrc32Field(crc32Decoder)
-
-	if err = pd.push(crc32Decoder); err != nil {
+	if err = pd.push(&crc32Field{polynomial: crcCastagnoli}); err != nil {
 		return err
 	}
 
@@ -129,8 +120,6 @@ func (b *RecordBatch) decode(pd packetDecoder) (err error) {
 	}
 	b.Codec = CompressionCodec(int8(attributes) & compressionCodecMask)
 	b.Control = attributes&controlMask == controlMask
-	b.LogAppendTime = attributes&timestampTypeMask == timestampTypeMask
-	b.IsTransactional = attributes&isTransactionalMask == isTransactionalMask
 
 	if b.LastOffsetDelta, err = pd.getInt32(); err != nil {
 		return err
@@ -210,12 +199,6 @@ func (b *RecordBatch) computeAttributes() int16 {
 	attr := int16(b.Codec) & int16(compressionCodecMask)
 	if b.Control {
 		attr |= controlMask
-	}
-	if b.LogAppendTime {
-		attr |= timestampTypeMask
-	}
-	if b.IsTransactional {
-		attr |= isTransactionalMask
 	}
 	return attr
 }

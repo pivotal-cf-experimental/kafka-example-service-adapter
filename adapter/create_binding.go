@@ -72,7 +72,7 @@ func (b *Binder) CreateBinding(params serviceadapter.CreateBindingParams) (servi
 	}, nil
 }
 
-//go:generate counterfeiter -o fake_command_runner/fake_command_runner.go . CommandRunner
+//go:generate go run github.com/maxbrunsfeld/counterfeiter/v6 -o fake_command_runner/fake_command_runner.go . CommandRunner
 type CommandRunner interface {
 	Run(name string, arg ...string) ([]byte, []byte, error)
 }

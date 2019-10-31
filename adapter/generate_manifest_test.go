@@ -37,7 +37,7 @@ var _ = Describe("generating manifests", func() {
 		serviceDeployment = serviceadapter.ServiceDeployment{
 			DeploymentName: "a-great-deployment",
 			Releases:       serviceadapter.ServiceReleases{serviceRelease},
-			Stemcells:       []serviceadapter.Stemcell{{OS: "TempleOS", Version: "4.05"}},
+			Stemcells:      []serviceadapter.Stemcell{{OS: "TempleOS", Version: "4.05"}},
 		}
 		generatedInstanceGroups = []bosh.InstanceGroup{{
 			Name:     "kafka_server",
