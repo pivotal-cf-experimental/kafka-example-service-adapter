@@ -11,5 +11,5 @@ require (
 	github.com/onsi/ginkgo v1.10.3
 	github.com/onsi/gomega v1.7.1
 	github.com/pivotal-cf/on-demand-services-sdk v0.35.1-0.20191107154534-d765776a0502
-	gopkg.in/yaml.v2 v2.2.5
+	gopkg.in/yaml.v2 v2.2.7
 )
