@@ -3,7 +3,7 @@ module github.com/pivotal-cf-experimental/kafka-example-service-adapter
 go 1.13
 
 require (
-	github.com/Shopify/sarama v1.24.1
+	github.com/Shopify/sarama v1.26.0
 	github.com/coreos/go-semver v0.3.0
 	github.com/golang/protobuf v1.3.2 // indirect
 	github.com/klauspost/cpuid v1.2.1 // indirect
