@@ -1,7 +1,7 @@
 # code.cloudfoundry.org/lager v1.1.1-0.20191008172124-a9afc05ee5be
 code.cloudfoundry.org/lager
 code.cloudfoundry.org/lager/internal/truncate
-# github.com/Shopify/sarama v1.24.1
+# github.com/Shopify/sarama v1.26.0
 github.com/Shopify/sarama
 # github.com/coreos/go-semver v0.3.0
 github.com/coreos/go-semver/semver
@@ -30,7 +30,7 @@ github.com/hpcloud/tail/winfile
 # github.com/jcmturner/gofork v0.0.0-20190328161633-dc7c13fece03
 github.com/jcmturner/gofork/encoding/asn1
 github.com/jcmturner/gofork/x/crypto/pbkdf2
-# github.com/klauspost/compress v1.8.2
+# github.com/klauspost/compress v1.9.7
 github.com/klauspost/compress/fse
 github.com/klauspost/compress/huff0
 github.com/klauspost/compress/snappy
@@ -191,5 +191,5 @@ gopkg.in/jcmturner/rpc.v1/mstypes
 gopkg.in/jcmturner/rpc.v1/ndr
 # gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7
 gopkg.in/tomb.v1
-# gopkg.in/yaml.v2 v2.2.7
+# gopkg.in/yaml.v2 v2.2.8
 gopkg.in/yaml.v2
