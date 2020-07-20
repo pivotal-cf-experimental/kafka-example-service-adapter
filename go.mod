@@ -5,10 +5,9 @@ go 1.13
 require (
 	github.com/Shopify/sarama v1.26.0
 	github.com/coreos/go-semver v0.3.0
-	github.com/golang/protobuf v1.3.2 // indirect
 	github.com/maxbrunsfeld/counterfeiter/v6 v6.2.2
-	github.com/onsi/ginkgo v1.11.0
-	github.com/onsi/gomega v1.8.1
+	github.com/onsi/ginkgo v1.14.0
+	github.com/onsi/gomega v1.10.1
 	github.com/pivotal-cf/on-demand-services-sdk v0.40.1-0.20200720100755-5c57afcd48c1
-	gopkg.in/yaml.v2 v2.2.8
+	gopkg.in/yaml.v2 v2.3.0
 )
