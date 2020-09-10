@@ -5,7 +5,7 @@ go 1.13
 require (
 	github.com/Shopify/sarama v1.27.0
 	github.com/coreos/go-semver v0.3.0
-	github.com/maxbrunsfeld/counterfeiter/v6 v6.2.2
+	github.com/maxbrunsfeld/counterfeiter/v6 v6.2.3
 	github.com/onsi/ginkgo v1.14.1
 	github.com/onsi/gomega v1.10.2
 	github.com/pivotal-cf/on-demand-services-sdk v0.40.1-0.20200720100755-5c57afcd48c1
