@@ -8,6 +8,6 @@ require (
 	github.com/maxbrunsfeld/counterfeiter/v6 v6.2.3
 	github.com/onsi/ginkgo v1.14.1
 	github.com/onsi/gomega v1.10.2
-	github.com/pivotal-cf/on-demand-services-sdk v0.40.1-0.20200720100755-5c57afcd48c1
+	github.com/pivotal-cf/on-demand-services-sdk v0.40.1-0.20200916152143-812ef1f3436b
 	gopkg.in/yaml.v2 v2.3.0
 )
