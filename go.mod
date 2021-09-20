@@ -8,12 +8,12 @@ require (
 	github.com/maxbrunsfeld/counterfeiter/v6 v6.4.1
 	github.com/onsi/ginkgo v1.16.4
 	github.com/onsi/gomega v1.16.0
-	github.com/pivotal-cf/on-demand-services-sdk v0.42.2-0.20210916101918-31612e58e5c6
+	github.com/pivotal-cf/on-demand-services-sdk v0.42.2-0.20210920105913-f2092d41236f
 	gopkg.in/yaml.v2 v2.4.0
 )
 
 require (
-	code.cloudfoundry.org/lager v1.1.1-0.20191008172124-a9afc05ee5be // indirect
+	code.cloudfoundry.org/lager v2.0.0+incompatible // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/eapache/go-resiliency v1.2.0 // indirect
 	github.com/eapache/go-xerial-snappy v0.0.0-20180814174437-776d5712da21 // indirect
@@ -31,9 +31,9 @@ require (
 	github.com/jcmturner/rpc/v2 v2.0.3 // indirect
 	github.com/klauspost/compress v1.12.2 // indirect
 	github.com/nxadm/tail v1.4.8 // indirect
-	github.com/pborman/uuid v1.2.0 // indirect
+	github.com/pborman/uuid v1.2.1 // indirect
 	github.com/pierrec/lz4 v2.6.0+incompatible // indirect
-	github.com/pivotal-cf/brokerapi/v8 v8.1.0 // indirect
+	github.com/pivotal-cf/brokerapi/v8 v8.2.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 // indirect
 	golang.org/x/crypto v0.0.0-20210616213533-5ff15b29337e // indirect
