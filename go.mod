@@ -8,7 +8,7 @@ require (
 	github.com/maxbrunsfeld/counterfeiter/v6 v6.4.1
 	github.com/onsi/ginkgo v1.16.5
 	github.com/onsi/gomega v1.16.0
-	github.com/pivotal-cf/on-demand-services-sdk v0.42.3-0.20211012151305-42cb06efc925
+	github.com/pivotal-cf/on-demand-services-sdk v0.42.3-0.20211013132911-368b7f25e16f
 	gopkg.in/yaml.v2 v2.4.0
 )
 
@@ -45,4 +45,5 @@ require (
 	golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 // indirect
 	gopkg.in/go-playground/validator.v8 v8.18.2 // indirect
 	gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7 // indirect
+	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 )
