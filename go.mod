@@ -8,7 +8,7 @@ require (
 	github.com/maxbrunsfeld/counterfeiter/v6 v6.4.1
 	github.com/onsi/ginkgo v1.16.5
 	github.com/onsi/gomega v1.18.1
-	github.com/pivotal-cf/on-demand-services-sdk v0.42.4-0.20220128120815-5af4f922f1f4
+	github.com/pivotal-cf/on-demand-services-sdk v0.42.4-0.20220204114902-f28cf799e8f1
 	gopkg.in/yaml.v2 v2.4.0
 )
 
@@ -33,7 +33,7 @@ require (
 	github.com/nxadm/tail v1.4.8 // indirect
 	github.com/pborman/uuid v1.2.1 // indirect
 	github.com/pierrec/lz4 v2.6.1+incompatible // indirect
-	github.com/pivotal-cf/brokerapi/v8 v8.2.0 // indirect
+	github.com/pivotal-cf/brokerapi/v8 v8.2.1 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 // indirect
 	golang.org/x/crypto v0.0.0-20220128200615-198e4374d7ed // indirect
