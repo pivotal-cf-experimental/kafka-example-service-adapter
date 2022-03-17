@@ -116,8 +116,8 @@ github.com/pierrec/lz4 v2.6.1+incompatible h1:9UY3+iC23yxF0UfGaYrGplQ+79Rg+h/q9F
 github.com/pierrec/lz4 v2.6.1+incompatible/go.mod h1:pdkljMzZIN41W+lC3N2tnIh5sFi+IEE17M5jbnwPHcY=
 github.com/pivotal-cf/brokerapi/v8 v8.2.1 h1:fqUxKvAzClcLQiTlMgYJdSGLX8rcJHP+FlQqrkgqz3o=
 github.com/pivotal-cf/brokerapi/v8 v8.2.1/go.mod h1:5xXOOrAWrOBWr/actouT36XDbhX1K7l+j7FYcBjuk64=
-github.com/pivotal-cf/on-demand-services-sdk v0.42.4-0.20220204114902-f28cf799e8f1 h1:2XwuCajFFISqS1KAu8GM+PbFc5PtOf/6hnrFum2Hq34=
-github.com/pivotal-cf/on-demand-services-sdk v0.42.4-0.20220204114902-f28cf799e8f1/go.mod h1:xtvlRu60vnLMfJDU7YICr/bLCTk36dRSWxeQYLBUr1c=
+github.com/pivotal-cf/on-demand-services-sdk v0.42.5-0.20220317121237-7ccd97652ac9 h1:Wd7LLaQreSuqlv836OUeQzNytJHhFdL1H7G9dyffbgs=
+github.com/pivotal-cf/on-demand-services-sdk v0.42.5-0.20220317121237-7ccd97652ac9/go.mod h1:L6NPYbq7sxsvkqrSqo1BIATA1DPTQP30Qdmv7WHf6DU=
 github.com/pkg/errors v0.9.1 h1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=
 github.com/pkg/errors v0.9.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
