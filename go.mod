@@ -3,7 +3,7 @@ module github.com/pivotal-cf-experimental/kafka-example-service-adapter
 go 1.17
 
 require (
-	github.com/Shopify/sarama v1.33.0
+	github.com/Shopify/sarama v1.34.0
 	github.com/coreos/go-semver v0.3.0
 	github.com/maxbrunsfeld/counterfeiter/v6 v6.5.0
 	github.com/onsi/ginkgo v1.16.5
@@ -34,13 +34,13 @@ require (
 	github.com/klauspost/compress v1.15.0 // indirect
 	github.com/nxadm/tail v1.4.8 // indirect
 	github.com/pborman/uuid v1.2.1 // indirect
-	github.com/pierrec/lz4 v2.6.1+incompatible // indirect
+	github.com/pierrec/lz4/v4 v4.1.14 // indirect
 	github.com/pivotal-cf/brokerapi/v8 v8.2.1 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 // indirect
 	golang.org/x/crypto v0.0.0-20220214200702-86341886e292 // indirect
 	golang.org/x/mod v0.6.0-dev.0.20220106191415-9b9b3d81d5e3 // indirect
-	golang.org/x/net v0.0.0-20220225172249-27dd8689420f // indirect
+	golang.org/x/net v0.0.0-20220520000938-2e3eb7b945c2 // indirect
 	golang.org/x/sys v0.0.0-20220315194320-039c03cc5b86 // indirect
 	golang.org/x/text v0.3.7 // indirect
 	golang.org/x/tools v0.1.10 // indirect
