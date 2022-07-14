@@ -1,6 +1,6 @@
 module github.com/pivotal-cf-experimental/kafka-example-service-adapter
 
-go 1.17
+go 1.18
 
 require (
 	github.com/Shopify/sarama v1.34.1
