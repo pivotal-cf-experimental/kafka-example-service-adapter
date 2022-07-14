@@ -165,8 +165,8 @@ github.com/pierrec/lz4/v4/internal/lz4block
 github.com/pierrec/lz4/v4/internal/lz4errors
 github.com/pierrec/lz4/v4/internal/lz4stream
 github.com/pierrec/lz4/v4/internal/xxh32
-# github.com/pivotal-cf/brokerapi/v8 v8.2.1
-## explicit; go 1.17
+# github.com/pivotal-cf/brokerapi/v8 v8.2.2
+## explicit; go 1.18
 github.com/pivotal-cf/brokerapi/v8
 github.com/pivotal-cf/brokerapi/v8/auth
 github.com/pivotal-cf/brokerapi/v8/domain
@@ -174,7 +174,7 @@ github.com/pivotal-cf/brokerapi/v8/domain/apiresponses
 github.com/pivotal-cf/brokerapi/v8/handlers
 github.com/pivotal-cf/brokerapi/v8/middlewares
 github.com/pivotal-cf/brokerapi/v8/utils
-# github.com/pivotal-cf/on-demand-services-sdk v0.42.5-0.20220714092032-4a03fbc357d6
+# github.com/pivotal-cf/on-demand-services-sdk v0.42.5-0.20220714105955-1aa28daa45d1
 ## explicit; go 1.18
 github.com/pivotal-cf/on-demand-services-sdk/bosh
 github.com/pivotal-cf/on-demand-services-sdk/serviceadapter
@@ -188,7 +188,7 @@ github.com/rcrowley/go-metrics
 ## explicit; go 1.17
 golang.org/x/crypto/md4
 golang.org/x/crypto/pbkdf2
-# golang.org/x/mod v0.6.0-dev.0.20220106191415-9b9b3d81d5e3
+# golang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4
 ## explicit; go 1.17
 golang.org/x/mod/internal/lazyregexp
 golang.org/x/mod/module
@@ -225,7 +225,7 @@ golang.org/x/text/internal/utf8internal
 golang.org/x/text/language
 golang.org/x/text/runes
 golang.org/x/text/transform
-# golang.org/x/tools v0.1.10
+# golang.org/x/tools v0.1.11-0.20220513221640-090b14e8501f
 ## explicit; go 1.17
 golang.org/x/tools/go/ast/astutil
 golang.org/x/tools/go/ast/inspector
@@ -246,10 +246,6 @@ golang.org/x/tools/internal/imports
 golang.org/x/tools/internal/packagesinternal
 golang.org/x/tools/internal/typeparams
 golang.org/x/tools/internal/typesinternal
-# golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1
-## explicit; go 1.11
-golang.org/x/xerrors
-golang.org/x/xerrors/internal
 # gopkg.in/go-playground/validator.v8 v8.18.2
 ## explicit
 gopkg.in/go-playground/validator.v8
