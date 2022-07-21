@@ -227,8 +227,8 @@ github.com/pierrec/lz4/v4 v4.1.14 h1:+fL8AQEZtz/ijeNnpduH0bROTu0O3NZAlPjQxGn8LwE
 github.com/pierrec/lz4/v4 v4.1.14/go.mod h1:gZWDp/Ze/IJXGXf23ltt2EXimqmTUXEy0GFuRQyBid4=
 github.com/pivotal-cf/brokerapi/v8 v8.2.2 h1:wsNvJbZr8DyCudZOwl3D8AYHzKwvcWxKJSpEhSDOnFo=
 github.com/pivotal-cf/brokerapi/v8 v8.2.2/go.mod h1:WP40q2NqgHbyj8zRx+QGOcPyIXQ7xp1E+CQ8qep455w=
-github.com/pivotal-cf/on-demand-services-sdk v0.42.5-0.20220714105955-1aa28daa45d1 h1:me9ShopzkbjohvqlS2L0DLlVvjV/gW7jB+y5qFJOo90=
-github.com/pivotal-cf/on-demand-services-sdk v0.42.5-0.20220714105955-1aa28daa45d1/go.mod h1:+T4CRvAjVKekVYvTlteaQboM/9JFrmdVpbeOJSI7J4g=
+github.com/pivotal-cf/on-demand-services-sdk v0.42.6-0.20220721121124-b7b7b37bc248 h1:CK02+EUK2t5a8Icc6YlNY/UHacywDREY8/uXdp12kF8=
+github.com/pivotal-cf/on-demand-services-sdk v0.42.6-0.20220721121124-b7b7b37bc248/go.mod h1:sBFxEkmS2j1jnCSqYOYfxAcINRoPAcJHUD0DfFn0xLM=
 github.com/pkg/errors v0.8.0/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pkg/errors v0.8.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pkg/errors v0.9.1 h1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=
