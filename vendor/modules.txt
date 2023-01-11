@@ -1,7 +1,7 @@
 # code.cloudfoundry.org/lager v2.0.0+incompatible
 ## explicit
 code.cloudfoundry.org/lager
-# github.com/Shopify/sarama v1.37.2
+# github.com/Shopify/sarama v1.38.0
 ## explicit; go 1.17
 github.com/Shopify/sarama
 # github.com/coreos/go-semver v0.3.0
