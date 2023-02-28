@@ -7,7 +7,7 @@ require (
 	github.com/coreos/go-semver v0.3.1
 	github.com/maxbrunsfeld/counterfeiter/v6 v6.6.1
 	github.com/onsi/ginkgo v1.16.5
-	github.com/onsi/gomega v1.27.1
+	github.com/onsi/gomega v1.27.2
 	github.com/pivotal-cf/on-demand-services-sdk v0.42.8-0.20230220121613-9d4c9233f302
 	gopkg.in/yaml.v2 v2.4.0
 )
@@ -42,11 +42,11 @@ require (
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 // indirect
 	github.com/rogpeppe/go-internal v1.9.0 // indirect
 	golang.org/x/crypto v0.0.0-20220722155217-630584e8d5aa // indirect
-	golang.org/x/mod v0.7.0 // indirect
+	golang.org/x/mod v0.8.0 // indirect
 	golang.org/x/net v0.7.0 // indirect
 	golang.org/x/sys v0.5.0 // indirect
 	golang.org/x/text v0.7.0 // indirect
-	golang.org/x/tools v0.5.0 // indirect
+	golang.org/x/tools v0.6.0 // indirect
 	gopkg.in/go-playground/validator.v8 v8.18.2 // indirect
 	gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
