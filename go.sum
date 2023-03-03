@@ -97,8 +97,12 @@ github.com/pierrec/lz4/v4 v4.1.17 h1:kV4Ip+/hUBC+8T6+2EgburRtkE9ef4nbY3f4dFhGjMc
 github.com/pierrec/lz4/v4 v4.1.17/go.mod h1:gZWDp/Ze/IJXGXf23ltt2EXimqmTUXEy0GFuRQyBid4=
 github.com/pivotal-cf/brokerapi/v9 v9.0.0 h1:KMJ0NcHtEntdI8T+woTtzg3MrcDDklhupDennc5KHME=
 github.com/pivotal-cf/brokerapi/v9 v9.0.0/go.mod h1:iLRDxJv+ctZOVi9DcnCDaBJydssX0RqQRsgZfKK7YYA=
+github.com/pivotal-cf/on-demand-services-sdk v0.42.7 h1:hLIxx1viHfF5snDB6LKMq8SKpRQz4Jpr0dw+vTicna8=
+github.com/pivotal-cf/on-demand-services-sdk v0.42.7/go.mod h1:D0KX3Vgm28njudHFs4r78iqyuMHVWW1aHB/Wu9i1j/U=
 github.com/pivotal-cf/on-demand-services-sdk v0.42.8-0.20230303154204-5867ba880f55 h1:jMjOV5iUxx4v3mkhk+RXfcWtJ2HSWRbOazux0lHhvsA=
 github.com/pivotal-cf/on-demand-services-sdk v0.42.8-0.20230303154204-5867ba880f55/go.mod h1:GwavL+iwn8nGwzHz7Gxv0BM5yfW54jpa0vDTAV7aw1M=
+github.com/pivotal-cf/on-demand-services-sdk v0.42.8-0.20230303162830-216f8cd57daa h1:soyJVc2/CIYsw5WQm+31dzByeitXyJEwULLsqjYz7PE=
+github.com/pivotal-cf/on-demand-services-sdk v0.42.8-0.20230303162830-216f8cd57daa/go.mod h1:92MPBVVlpH1cd1cF0akcTRe6hGwWNPO4IRt8oN3ElMs=
 github.com/pkg/errors v0.9.1 h1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=
 github.com/pkg/errors v0.9.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
@@ -119,8 +123,9 @@ github.com/yuin/goldmark v1.2.1/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9dec
 golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=
 golang.org/x/crypto v0.0.0-20191011191535-87dc89f01550/go.mod h1:yigFU9vqHzYiE8UmvKecakEJjdnWj3jj499lnFckfCI=
 golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9/go.mod h1:LzIPMQfyMNhhGPhUkYOs5KpL4U8rLKemX1yGLhDgUto=
-golang.org/x/crypto v0.0.0-20220722155217-630584e8d5aa h1:zuSxTR4o9y82ebqCUJYNGJbGPo6sKVl54f/TVDObg1c=
 golang.org/x/crypto v0.0.0-20220722155217-630584e8d5aa/go.mod h1:IxCIyHEi3zRg3s0A5j5BB6A9Jmi73HwBIUl50j+osU4=
+golang.org/x/crypto v0.6.0 h1:qfktjS5LUO+fFKeJXZ+ikTRijMmljikvG68fpMMruSc=
+golang.org/x/crypto v0.6.0/go.mod h1:OFC/31mSvZgRz0V1QTNCzfAI1aIRzbiufJtkMIlEp58=
 golang.org/x/mod v0.3.0/go.mod h1:s0Qsj1ACt9ePp/hMypM3fl4fZqREWJwdYDEqhRiZZUA=
 golang.org/x/mod v0.8.0 h1:LUYupSeNrTNCGzR/hVBk2NHZO4hXcVaW1k4Qx7rjPx8=
 golang.org/x/mod v0.8.0/go.mod h1:iBbtSCu2XBx23ZKBPSOrRkjjQPZFPuis4dIYUhu/chs=
