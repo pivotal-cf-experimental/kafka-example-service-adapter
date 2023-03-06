@@ -8,7 +8,7 @@ require (
 	github.com/maxbrunsfeld/counterfeiter/v6 v6.6.1
 	github.com/onsi/ginkgo v1.16.5
 	github.com/onsi/gomega v1.27.2
-	github.com/pivotal-cf/on-demand-services-sdk v0.42.8-0.20230303162830-216f8cd57daa
+	github.com/pivotal-cf/on-demand-services-sdk v0.42.8-0.20230306125928-8f5b6c237759
 	gopkg.in/yaml.v2 v2.4.0
 )
 
@@ -36,7 +36,7 @@ require (
 	github.com/klauspost/compress v1.15.14 // indirect
 	github.com/kr/text v0.2.0 // indirect
 	github.com/nxadm/tail v1.4.8 // indirect
-	github.com/onsi/ginkgo/v2 v2.8.4 // indirect
+	github.com/onsi/ginkgo/v2 v2.9.0 // indirect
 	github.com/pborman/uuid v1.2.1 // indirect
 	github.com/pierrec/lz4/v4 v4.1.17 // indirect
 	github.com/pivotal-cf/brokerapi/v9 v9.0.0 // indirect
