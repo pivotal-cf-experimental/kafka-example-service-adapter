@@ -8,7 +8,7 @@ require (
 	github.com/maxbrunsfeld/counterfeiter/v6 v6.6.1
 	github.com/onsi/ginkgo v1.16.5
 	github.com/onsi/gomega v1.27.4
-	github.com/pivotal-cf/on-demand-services-sdk v0.43.1-0.20230314125856-7c492710e5fc
+	github.com/pivotal-cf/on-demand-services-sdk v0.43.1-0.20230320125905-28e1aa2ffa81
 	gopkg.in/yaml.v2 v2.4.0
 )
 
@@ -21,7 +21,7 @@ require (
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
-	github.com/go-playground/validator/v10 v10.11.2 // indirect
+	github.com/go-playground/validator/v10 v10.12.0 // indirect
 	github.com/go-task/slim-sprig v0.0.0-20210107165309-348f09dbbbc0 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/google/go-cmp v0.5.9 // indirect
@@ -37,7 +37,8 @@ require (
 	github.com/jcmturner/gokrb5/v8 v8.4.3 // indirect
 	github.com/jcmturner/rpc/v2 v2.0.3 // indirect
 	github.com/klauspost/compress v1.15.14 // indirect
-	github.com/leodido/go-urn v1.2.1 // indirect
+	github.com/kr/text v0.2.0 // indirect
+	github.com/leodido/go-urn v1.2.2 // indirect
 	github.com/nxadm/tail v1.4.8 // indirect
 	github.com/onsi/ginkgo/v2 v2.9.1 // indirect
 	github.com/pborman/uuid v1.2.1 // indirect
@@ -46,7 +47,7 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 // indirect
 	github.com/rogpeppe/go-internal v1.9.0 // indirect
-	golang.org/x/crypto v0.6.0 // indirect
+	golang.org/x/crypto v0.7.0 // indirect
 	golang.org/x/mod v0.9.0 // indirect
 	golang.org/x/net v0.8.0 // indirect
 	golang.org/x/sys v0.6.0 // indirect
