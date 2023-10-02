@@ -32,7 +32,7 @@ github.com/go-playground/locales/currency
 # github.com/go-playground/universal-translator v0.18.1
 ## explicit; go 1.18
 github.com/go-playground/universal-translator
-# github.com/go-playground/validator/v10 v10.15.4
+# github.com/go-playground/validator/v10 v10.15.5
 ## explicit; go 1.18
 github.com/go-playground/validator/v10
 # github.com/go-task/slim-sprig v0.0.0-20230315185526-52ccab3ef572
@@ -184,7 +184,7 @@ github.com/pierrec/lz4/v4/internal/xxh32
 # github.com/pivotal-cf/brokerapi/v10 v10.0.0
 ## explicit; go 1.19
 github.com/pivotal-cf/brokerapi/v10/domain
-# github.com/pivotal-cf/on-demand-services-sdk v0.43.4-0.20230929120912-b19eba44bf1d
+# github.com/pivotal-cf/on-demand-services-sdk v0.44.1-0.20231002122856-1f99872e2b90
 ## explicit; go 1.20
 github.com/pivotal-cf/on-demand-services-sdk/bosh
 github.com/pivotal-cf/on-demand-services-sdk/serviceadapter
