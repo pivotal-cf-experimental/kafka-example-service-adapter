@@ -184,7 +184,7 @@ github.com/pierrec/lz4/v4/internal/xxh32
 # github.com/pivotal-cf/brokerapi/v10 v10.1.1
 ## explicit; go 1.20
 github.com/pivotal-cf/brokerapi/v10/domain
-# github.com/pivotal-cf/on-demand-services-sdk v0.45.1
+# github.com/pivotal-cf/on-demand-services-sdk v0.45.2-0.20231113122336-5d00191d2aa9
 ## explicit; go 1.20
 github.com/pivotal-cf/on-demand-services-sdk/bosh
 github.com/pivotal-cf/on-demand-services-sdk/serviceadapter
@@ -201,8 +201,8 @@ github.com/rcrowley/go-metrics
 golang.org/x/crypto/md4
 golang.org/x/crypto/pbkdf2
 golang.org/x/crypto/sha3
-# golang.org/x/mod v0.12.0
-## explicit; go 1.17
+# golang.org/x/mod v0.13.0
+## explicit; go 1.18
 golang.org/x/mod/internal/lazyregexp
 golang.org/x/mod/module
 golang.org/x/mod/semver
@@ -214,8 +214,8 @@ golang.org/x/net/html/charset
 golang.org/x/net/http2/hpack
 golang.org/x/net/internal/socks
 golang.org/x/net/proxy
-# golang.org/x/sys v0.13.0
-## explicit; go 1.17
+# golang.org/x/sys v0.14.0
+## explicit; go 1.18
 golang.org/x/sys/cpu
 golang.org/x/sys/execabs
 golang.org/x/sys/unix
@@ -238,7 +238,7 @@ golang.org/x/text/internal/utf8internal
 golang.org/x/text/language
 golang.org/x/text/runes
 golang.org/x/text/transform
-# golang.org/x/tools v0.12.1-0.20230825192346-2191a27a6dc5
+# golang.org/x/tools v0.14.0
 ## explicit; go 1.18
 golang.org/x/tools/go/ast/astutil
 golang.org/x/tools/go/ast/inspector
