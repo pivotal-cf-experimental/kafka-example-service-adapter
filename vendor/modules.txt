@@ -184,7 +184,7 @@ github.com/pierrec/lz4/v4/internal/xxh32
 # github.com/pivotal-cf/brokerapi/v10 v10.1.1
 ## explicit; go 1.20
 github.com/pivotal-cf/brokerapi/v10/domain
-# github.com/pivotal-cf/on-demand-services-sdk v0.45.4-0.20240115121818-3e77a3d9d390
+# github.com/pivotal-cf/on-demand-services-sdk v0.45.4-0.20240115122012-f4e75cf691c6
 ## explicit; go 1.20
 github.com/pivotal-cf/on-demand-services-sdk/bosh
 github.com/pivotal-cf/on-demand-services-sdk/serviceadapter
