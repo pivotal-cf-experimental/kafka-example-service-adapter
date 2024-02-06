@@ -7,7 +7,7 @@ require (
 	github.com/coreos/go-semver v0.3.1
 	github.com/maxbrunsfeld/counterfeiter/v6 v6.8.1
 	github.com/onsi/ginkgo v1.16.5
-	github.com/onsi/gomega v1.30.0
+	github.com/onsi/gomega v1.31.1
 	github.com/pivotal-cf/on-demand-services-sdk v0.45.4-0.20240206194040-f8cf46dc5c11
 	gopkg.in/yaml.v2 v2.4.0
 )
