@@ -7,8 +7,8 @@ require (
 	github.com/coreos/go-semver v0.3.1
 	github.com/maxbrunsfeld/counterfeiter/v6 v6.8.1
 	github.com/onsi/ginkgo v1.16.5
-	github.com/onsi/gomega v1.30.0
-	github.com/pivotal-cf/on-demand-services-sdk v0.45.4-0.20240206194040-f8cf46dc5c11
+	github.com/onsi/gomega v1.31.1
+	github.com/pivotal-cf/on-demand-services-sdk v0.45.4-0.20240206194250-334facb85b43
 	gopkg.in/yaml.v2 v2.4.0
 )
 
@@ -38,7 +38,7 @@ require (
 	github.com/leodido/go-urn v1.2.4 // indirect
 	github.com/nxadm/tail v1.4.8 // indirect
 	github.com/pierrec/lz4/v4 v4.1.17 // indirect
-	github.com/pivotal-cf/brokerapi/v10 v10.1.1 // indirect
+	github.com/pivotal-cf/brokerapi/v10 v10.2.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 // indirect
 	github.com/rogpeppe/go-internal v1.9.0 // indirect
