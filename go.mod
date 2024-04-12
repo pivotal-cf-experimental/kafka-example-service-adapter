@@ -1,6 +1,8 @@
 module github.com/pivotal-cf-experimental/kafka-example-service-adapter
 
-go 1.19
+go 1.21
+
+toolchain go1.22.2
 
 require (
 	github.com/Shopify/sarama v1.38.1
@@ -8,7 +10,7 @@ require (
 	github.com/maxbrunsfeld/counterfeiter/v6 v6.8.1
 	github.com/onsi/ginkgo v1.16.5
 	github.com/onsi/gomega v1.32.0
-	github.com/pivotal-cf/on-demand-services-sdk v0.45.4-0.20240325125323-fc73f3e8a4fb
+	github.com/pivotal-cf/on-demand-services-sdk v0.45.5-0.20240412212149-512df882a3a1
 	gopkg.in/yaml.v2 v2.4.0
 )
 
@@ -34,11 +36,10 @@ require (
 	github.com/jcmturner/gokrb5/v8 v8.4.3 // indirect
 	github.com/jcmturner/rpc/v2 v2.0.3 // indirect
 	github.com/klauspost/compress v1.15.14 // indirect
-	github.com/kr/text v0.2.0 // indirect
 	github.com/leodido/go-urn v1.4.0 // indirect
 	github.com/nxadm/tail v1.4.8 // indirect
 	github.com/pierrec/lz4/v4 v4.1.17 // indirect
-	github.com/pivotal-cf/brokerapi/v10 v10.2.0 // indirect
+	github.com/pivotal-cf/brokerapi/v11 v11.0.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 // indirect
 	github.com/rogpeppe/go-internal v1.9.0 // indirect
