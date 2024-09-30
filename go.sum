@@ -105,8 +105,8 @@ github.com/pierrec/lz4/v4 v4.1.17 h1:kV4Ip+/hUBC+8T6+2EgburRtkE9ef4nbY3f4dFhGjMc
 github.com/pierrec/lz4/v4 v4.1.17/go.mod h1:gZWDp/Ze/IJXGXf23ltt2EXimqmTUXEy0GFuRQyBid4=
 github.com/pivotal-cf/brokerapi/v11 v11.0.9 h1:WpaMj8gYzTDw2aFnJbNUMuF6oiZu4RExiWKrJPa/90o=
 github.com/pivotal-cf/brokerapi/v11 v11.0.9/go.mod h1:0kruRDTWokXuSul53amfiizBKX3Px9rNAo4oZCdhjrE=
-github.com/pivotal-cf/on-demand-services-sdk v0.46.1-0.20240919170606-d43876cce627 h1:Z7mZ3o9sB4ztC9mci/oo3EZFYH/hMZPl/dK44qgFfxQ=
-github.com/pivotal-cf/on-demand-services-sdk v0.46.1-0.20240919170606-d43876cce627/go.mod h1:A8A8c2CWIDf1wi075icwd+Bz8zMQhjDMZcXqutfgukA=
+github.com/pivotal-cf/on-demand-services-sdk v0.46.1-0.20240930174524-3bfaf2935743 h1:HTQ+nFkL77Q0mllJqTFyHfCgenJvbzFHKRzU8m4k/Qk=
+github.com/pivotal-cf/on-demand-services-sdk v0.46.1-0.20240930174524-3bfaf2935743/go.mod h1:A8A8c2CWIDf1wi075icwd+Bz8zMQhjDMZcXqutfgukA=
 github.com/pkg/errors v0.9.1 h1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=
 github.com/pkg/errors v0.9.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
