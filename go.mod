@@ -1,16 +1,16 @@
 module github.com/pivotal-cf-experimental/kafka-example-service-adapter
 
-go 1.22.0
+go 1.23
 
-toolchain go1.23.1
+toolchain go1.23.2
 
 require (
 	github.com/Shopify/sarama v1.38.1
 	github.com/coreos/go-semver v0.3.1
-	github.com/maxbrunsfeld/counterfeiter/v6 v6.9.0
+	github.com/maxbrunsfeld/counterfeiter/v6 v6.10.0
 	github.com/onsi/ginkgo v1.16.5
 	github.com/onsi/gomega v1.34.2
-	github.com/pivotal-cf/on-demand-services-sdk v0.46.1-0.20240930174524-3bfaf2935743
+	github.com/pivotal-cf/on-demand-services-sdk v0.46.1-0.20241010123647-cda87d815e06
 	gopkg.in/yaml.v2 v2.4.0
 )
 
@@ -39,17 +39,17 @@ require (
 	github.com/leodido/go-urn v1.4.0 // indirect
 	github.com/nxadm/tail v1.4.8 // indirect
 	github.com/pierrec/lz4/v4 v4.1.17 // indirect
-	github.com/pivotal-cf/brokerapi/v11 v11.0.9 // indirect
+	github.com/pivotal-cf/brokerapi/v11 v11.0.10 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 // indirect
 	github.com/rogpeppe/go-internal v1.9.0 // indirect
-	golang.org/x/crypto v0.27.0 // indirect
+	golang.org/x/crypto v0.28.0 // indirect
 	golang.org/x/mod v0.21.0 // indirect
-	golang.org/x/net v0.29.0 // indirect
+	golang.org/x/net v0.30.0 // indirect
 	golang.org/x/sync v0.8.0 // indirect
-	golang.org/x/sys v0.25.0 // indirect
-	golang.org/x/text v0.18.0 // indirect
-	golang.org/x/tools v0.25.0 // indirect
+	golang.org/x/sys v0.26.0 // indirect
+	golang.org/x/text v0.19.0 // indirect
+	golang.org/x/tools v0.26.0 // indirect
 	gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
