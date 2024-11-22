@@ -180,10 +180,10 @@ github.com/pierrec/lz4/v4/internal/lz4block
 github.com/pierrec/lz4/v4/internal/lz4errors
 github.com/pierrec/lz4/v4/internal/lz4stream
 github.com/pierrec/lz4/v4/internal/xxh32
-# github.com/pivotal-cf/brokerapi/v11 v11.0.13
+# github.com/pivotal-cf/brokerapi/v11 v11.0.14
 ## explicit; go 1.21
 github.com/pivotal-cf/brokerapi/v11/domain
-# github.com/pivotal-cf/on-demand-services-sdk v0.47.1-0.20241121125008-d2703c60804f
+# github.com/pivotal-cf/on-demand-services-sdk v0.47.1-0.20241122120339-0b16a3bf676f
 ## explicit; go 1.22.0
 github.com/pivotal-cf/on-demand-services-sdk/bosh
 github.com/pivotal-cf/on-demand-services-sdk/serviceadapter
