@@ -7,10 +7,10 @@ toolchain go1.23.2
 require (
 	github.com/Shopify/sarama v1.38.1
 	github.com/coreos/go-semver v0.3.1
-	github.com/maxbrunsfeld/counterfeiter/v6 v6.11.0
+	github.com/maxbrunsfeld/counterfeiter/v6 v6.11.2
 	github.com/onsi/ginkgo v1.16.5
 	github.com/onsi/gomega v1.36.1
-	github.com/pivotal-cf/on-demand-services-sdk v0.47.1-0.20241219125616-6de2e19abccf
+	github.com/pivotal-cf/on-demand-services-sdk v0.47.1-0.20241220130212-0b4ac02d6f42
 	gopkg.in/yaml.v2 v2.4.0
 )
 

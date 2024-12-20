@@ -116,7 +116,7 @@ github.com/klauspost/compress/zstd/internal/xxhash
 ## explicit; go 1.18
 github.com/leodido/go-urn
 github.com/leodido/go-urn/scim/schema
-# github.com/maxbrunsfeld/counterfeiter/v6 v6.11.0
+# github.com/maxbrunsfeld/counterfeiter/v6 v6.11.2
 ## explicit; go 1.23
 github.com/maxbrunsfeld/counterfeiter/v6
 github.com/maxbrunsfeld/counterfeiter/v6/arguments
@@ -184,7 +184,7 @@ github.com/pierrec/lz4/v4/internal/xxh32
 # github.com/pivotal-cf/brokerapi/v11 v11.0.16
 ## explicit; go 1.22.1
 github.com/pivotal-cf/brokerapi/v11/domain
-# github.com/pivotal-cf/on-demand-services-sdk v0.47.1-0.20241219125616-6de2e19abccf
+# github.com/pivotal-cf/on-demand-services-sdk v0.47.1-0.20241220130212-0b4ac02d6f42
 ## explicit; go 1.23
 github.com/pivotal-cf/on-demand-services-sdk/bosh
 github.com/pivotal-cf/on-demand-services-sdk/serviceadapter
