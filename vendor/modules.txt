@@ -1,4 +1,4 @@
-# code.cloudfoundry.org/brokerapi/v13 v13.0.4
+# code.cloudfoundry.org/brokerapi/v13 v13.0.5
 ## explicit; go 1.23.0
 code.cloudfoundry.org/brokerapi/v13/domain
 # github.com/Shopify/sarama v1.38.1
@@ -186,7 +186,7 @@ github.com/pierrec/lz4/v4/internal/lz4block
 github.com/pierrec/lz4/v4/internal/lz4errors
 github.com/pierrec/lz4/v4/internal/lz4stream
 github.com/pierrec/lz4/v4/internal/xxh32
-# github.com/pivotal-cf/on-demand-services-sdk v0.49.1-0.20250723121743-dfaec362336f
+# github.com/pivotal-cf/on-demand-services-sdk v0.49.2-0.20250730125208-f1d4dbc34c43
 ## explicit; go 1.23.0
 github.com/pivotal-cf/on-demand-services-sdk/bosh
 github.com/pivotal-cf/on-demand-services-sdk/serviceadapter
