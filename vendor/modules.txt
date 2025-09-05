@@ -186,7 +186,7 @@ github.com/pierrec/lz4/v4/internal/lz4block
 github.com/pierrec/lz4/v4/internal/lz4errors
 github.com/pierrec/lz4/v4/internal/lz4stream
 github.com/pierrec/lz4/v4/internal/xxh32
-# github.com/pivotal-cf/on-demand-services-sdk v0.49.4-0.20250829120230-c77c1edc8628
+# github.com/pivotal-cf/on-demand-services-sdk v0.49.4-0.20250905120238-e39ccb15d5df
 ## explicit; go 1.23.0
 github.com/pivotal-cf/on-demand-services-sdk/bosh
 github.com/pivotal-cf/on-demand-services-sdk/serviceadapter
