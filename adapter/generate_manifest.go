@@ -67,7 +67,7 @@ func (a *ManifestGenerator) GenerateManifest(params serviceadapter.GenerateManif
 	} else {
 		if actualVersion.LessThan(*minVersion) {
 			err = fmt.Errorf("minimum release version not met: >= kafka-service-release %s required", MinServiceReleaseVersion)
-			a.StderrLogger.Printf(err.Error())
+			a.StderrLogger.Println(err.Error())
 			return serviceadapter.GenerateManifestOutput{}, err
 		}
 	}
