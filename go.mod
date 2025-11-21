@@ -1,21 +1,21 @@
 module github.com/pivotal-cf-experimental/kafka-example-service-adapter
 
-go 1.23.0
+go 1.24.0
 
 toolchain go1.24.3
 
 require (
 	github.com/Shopify/sarama v1.38.1
 	github.com/coreos/go-semver v0.3.1
-	github.com/maxbrunsfeld/counterfeiter/v6 v6.11.3
+	github.com/maxbrunsfeld/counterfeiter/v6 v6.12.0
 	github.com/onsi/ginkgo v1.16.5
 	github.com/onsi/gomega v1.38.2
-	github.com/pivotal-cf/on-demand-services-sdk v0.49.5-0.20251028120229-4ccbe0b9b302
+	github.com/pivotal-cf/on-demand-services-sdk v0.49.6-0.20251121102003-686f634b9dab
 	gopkg.in/yaml.v2 v2.4.0
 )
 
 require (
-	code.cloudfoundry.org/brokerapi/v13 v13.0.7 // indirect
+	code.cloudfoundry.org/brokerapi/v13 v13.0.12 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/eapache/go-resiliency v1.3.0 // indirect
 	github.com/eapache/go-xerial-snappy v0.0.0-20230111030713-bf00bc1b83b6 // indirect
@@ -48,9 +48,9 @@ require (
 	golang.org/x/crypto v0.41.0 // indirect
 	golang.org/x/mod v0.27.0 // indirect
 	golang.org/x/net v0.43.0 // indirect
-	golang.org/x/sync v0.16.0 // indirect
+	golang.org/x/sync v0.17.0 // indirect
 	golang.org/x/sys v0.35.0 // indirect
-	golang.org/x/text v0.28.0 // indirect
+	golang.org/x/text v0.29.0 // indirect
 	golang.org/x/tools v0.36.0 // indirect
 	gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7 // indirect
 )
