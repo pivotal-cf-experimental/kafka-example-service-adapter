@@ -15,7 +15,7 @@ require (
 )
 
 require (
-	code.cloudfoundry.org/brokerapi/v13 v13.0.13 // indirect
+	code.cloudfoundry.org/brokerapi/v13 v13.0.14 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/eapache/go-resiliency v1.3.0 // indirect
 	github.com/eapache/go-xerial-snappy v0.0.0-20230111030713-bf00bc1b83b6 // indirect
