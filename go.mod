@@ -8,12 +8,12 @@ require (
 	github.com/maxbrunsfeld/counterfeiter/v6 v6.12.2
 	github.com/onsi/ginkgo v1.16.5
 	github.com/onsi/gomega v1.39.1
-	github.com/pivotal-cf/on-demand-services-sdk v0.50.2-0.20260406120344-d37a279ed264
+	github.com/pivotal-cf/on-demand-services-sdk v0.50.2-0.20260420134031-705ddf77c965
 	gopkg.in/yaml.v2 v2.4.0
 )
 
 require (
-	code.cloudfoundry.org/brokerapi/v13 v13.0.21 // indirect
+	code.cloudfoundry.org/brokerapi/v13 v13.0.22 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/eapache/go-resiliency v1.3.0 // indirect
 	github.com/eapache/go-xerial-snappy v0.0.0-20230111030713-bf00bc1b83b6 // indirect
