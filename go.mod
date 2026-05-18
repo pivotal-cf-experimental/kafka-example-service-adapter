@@ -7,13 +7,13 @@ require (
 	github.com/coreos/go-semver v0.3.1
 	github.com/maxbrunsfeld/counterfeiter/v6 v6.12.2
 	github.com/onsi/ginkgo v1.16.5
-	github.com/onsi/gomega v1.40.0
-	github.com/pivotal-cf/on-demand-services-sdk v0.50.3-0.20260518212957-3a6085db3adf
+	github.com/onsi/gomega v1.41.0
+	github.com/pivotal-cf/on-demand-services-sdk v0.50.3-0.20260518213329-1f656ff3fb0b
 	gopkg.in/yaml.v2 v2.4.0
 )
 
 require (
-	code.cloudfoundry.org/brokerapi/v13 v13.0.24 // indirect
+	code.cloudfoundry.org/brokerapi/v13 v13.0.25 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/eapache/go-resiliency v1.3.0 // indirect
 	github.com/eapache/go-xerial-snappy v0.0.0-20230111030713-bf00bc1b83b6 // indirect
